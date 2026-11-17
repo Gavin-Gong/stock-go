@@ -1,0 +1,2574 @@
+[
+  {
+    "name": "get_a_share_quotes",
+    "description": "获取 A 股 / 指数全量行情（腾讯）：最新价、涨跌幅、五档盘口、市值、PE/PB 等。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A 股代码数组，带不带 sh/sz/bj 前缀均可（如 600036 / sh600519）；指数需带前缀（如 sh000001）"
+        }
+      },
+      "required": [
+        "codes"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "quotes.cn"
+  },
+  {
+    "name": "get_a_share_simple_quotes",
+    "description": "获取 A 股 / 指数简要行情（价格、涨跌幅、成交量额）。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A 股代码数组，带不带 sh/sz/bj 前缀均可（如 600036 / sh600519）；指数需带前缀（如 sh000001）"
+        }
+      },
+      "required": [
+        "codes"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "quotes.cnSimple"
+  },
+  {
+    "name": "get_hk_quotes",
+    "description": "获取港股行情。代码 5 位数字，带不带 hk 前缀均可（如 00700 / hk00700）。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "港股代码数组，带不带 hk 前缀均可（如 00700 / hk00700）"
+        }
+      },
+      "required": [
+        "codes"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "quotes.hk"
+  },
+  {
+    "name": "get_us_quotes",
+    "description": "获取美股行情。代码如 AAPL / BABA。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "美股代码数组，带不带 us 前缀均可（如 AAPL / usAAPL）"
+        }
+      },
+      "required": [
+        "codes"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "quotes.us"
+  },
+  {
+    "name": "get_fund_quotes",
+    "description": "获取公募基金行情（场内 / 场外，净值类）。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "基金代码数组，纯 6 位数字（如 ['000001','110011']），无交易所前缀概念"
+        }
+      },
+      "required": [
+        "codes"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "quotes.fund"
+  },
+  {
+    "name": "get_fund_flow",
+    "description": "获取 A 股实时资金流向快照（东方财富，按代码批量）：主力/小单流入、流出、净额及占比。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A 股代码数组，带不带 sh/sz/bj 前缀均可（如 600036 / sz000858）"
+        }
+      },
+      "required": [
+        "codes"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "quotes.fundFlow"
+  },
+  {
+    "name": "get_panel_large_order",
+    "description": "获取盘口大单占比。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A 股代码数组，带不带 sh/sz/bj 前缀均可（如 600036 / sz000858）"
+        }
+      },
+      "required": [
+        "codes"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "quotes.largeOrder"
+  },
+  {
+    "name": "get_today_timeline",
+    "description": "获取 A 股当日分时走势（单只）。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "单只股票代码，如 600519 / sh600519"
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "quotes.timeline"
+  },
+  {
+    "name": "get_a_share_code_list",
+    "description": "获取 A 股全量代码列表（可按市场筛选 / 去交易所前缀）。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "simple": {
+          "type": "boolean",
+          "description": "去掉交易所前缀"
+        },
+        "market": {
+          "type": "string",
+          "enum": [
+            "sh",
+            "sz",
+            "bj",
+            "kc",
+            "cy"
+          ],
+          "description": "按板块筛选"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "codes.cn"
+  },
+  {
+    "name": "get_us_code_list",
+    "description": "获取美股全量代码列表。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "simple": {
+          "type": "boolean",
+          "description": "去掉市场前缀"
+        },
+        "market": {
+          "type": "string",
+          "enum": [
+            "NASDAQ",
+            "NYSE",
+            "AMEX"
+          ],
+          "description": "交易所筛选 NASDAQ/NYSE/AMEX"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "codes.us"
+  },
+  {
+    "name": "get_hk_code_list",
+    "description": "获取港股全量代码列表。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "codes.hk"
+  },
+  {
+    "name": "get_fund_code_list",
+    "description": "获取基金全量代码列表。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "codes.fund"
+  },
+  {
+    "name": "get_all_a_share_quotes",
+    "description": "批量拉取全市场 A 股行情。⚠️ 可能耗时数十秒、返回数千条（MCP tools/call 大数组会被裁剪至 200 条；SDK 直连返回全量）。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "batchSize": {
+          "type": "integer",
+          "description": "单批代码数，默认 500"
+        },
+        "concurrency": {
+          "type": "integer",
+          "description": "并发数，默认 7"
+        },
+        "market": {
+          "type": "string",
+          "enum": [
+            "sh",
+            "sz",
+            "bj",
+            "kc",
+            "cy"
+          ],
+          "description": "按板块筛选"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "batch.cn"
+  },
+  {
+    "name": "get_all_hk_quotes",
+    "description": "批量拉取全市场港股行情。⚠️ 耗时。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "batchSize": {
+          "type": "integer",
+          "description": "单批代码数，默认 500"
+        },
+        "concurrency": {
+          "type": "integer",
+          "description": "并发数，默认 7"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "batch.hk"
+  },
+  {
+    "name": "get_all_us_quotes",
+    "description": "批量拉取全市场美股行情。⚠️ 耗时。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "batchSize": {
+          "type": "integer",
+          "description": "单批代码数，默认 500"
+        },
+        "concurrency": {
+          "type": "integer",
+          "description": "并发数，默认 7"
+        },
+        "market": {
+          "type": "string",
+          "enum": [
+            "NASDAQ",
+            "NYSE",
+            "AMEX"
+          ],
+          "description": "交易所筛选 NASDAQ/NYSE/AMEX"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "batch.us"
+  },
+  {
+    "name": "get_quotes_by_codes",
+    "description": "按代码列表批量拉取完整行情。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A 股代码数组，带不带交易所前缀均可（如 ['sh600519','600036']）；指数需带前缀（如 'sh000001'）"
+        },
+        "batchSize": {
+          "type": "integer",
+          "description": "单批代码数，默认 500"
+        },
+        "concurrency": {
+          "type": "integer",
+          "description": "并发数，默认 7"
+        }
+      },
+      "required": [
+        "codes"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "batch.byCodes"
+  },
+  {
+    "name": "get_history_kline",
+    "description": "A 股 / 指数历史 K 线（日 / 周 / 月，含复权）：开高低收、成交量额、振幅、涨跌幅等。复权默认 qfq（前复权，看走势）；做回测 / 收益计算请显式传 hfq（后复权）或 ''（不复权）。支持中证特殊指数码形（93xxxx / H+5 位，如 930955 / H30533）。日期格式 YYYYMMDD。普通 A 股在东方财富历史接口频控时按腾讯、新浪顺序切换备用源；备用源缺少的 amount / turnoverRate 返回 null。新浪为最终容灾源且不提供复权价格。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "股票 / 指数代码，如 600519 / sh600519 / 930955（中证指数）"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "daily",
+          "description": "历史 K 线周期"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "qfq",
+          "description": "复权：qfq=前复权(默认,看走势) / hfq=后复权(算收益) / ''=不复权"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "kline.cn"
+  },
+  {
+    "name": "get_minute_kline",
+    "description": "A 股分钟 K 线 / 当日分时。period=1 返回最近约 5 个交易日的分时（不支持复权，可用 startDate/endDate 收窄到当日）；period=5/15/30/60 返回分钟 K 线（adjust 仅此时有效，默认 qfq），东方财富历史接口频控时按腾讯、新浪顺序切换备用源。分钟备用源仅提供未复权 OHLCV，amount / turnoverRate 返回 null。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "股票 / 指数代码，如 600519 / sh600519"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "1",
+            "5",
+            "15",
+            "30",
+            "60"
+          ],
+          "default": "1",
+          "description": "分钟周期；1=当日分时"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "qfq",
+          "description": "复权：qfq=前复权(默认,看走势) / hfq=后复权(算收益) / ''=不复权"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "开始时间"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束时间"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "kline.cnMinute"
+  },
+  {
+    "name": "get_hk_history_kline",
+    "description": "港股历史 K 线（日 / 周 / 月，含复权，币种 HKD）。代码 5 位数字，带不带 hk 前缀均可（如 00700 / hk00700）；亦接受恒生特殊指数字母代码（如 HSHCI 恒生医疗保健指数）。复权默认 qfq；日期格式 YYYYMMDD。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "港股代码，如 00700 / hk00700；特殊指数如 HSHCI"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "daily",
+          "description": "历史 K 线周期"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "qfq",
+          "description": "复权：qfq=前复权(默认,看走势) / hfq=后复权(算收益) / ''=不复权"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "kline.hk"
+  },
+  {
+    "name": "get_hk_minute_kline",
+    "description": "港股分钟 K 线 / 当日分时。period=1 返回当日分时（不支持复权，可用 recentDays 取近 N 日）；period=5/15/30/60 返回分钟 K 线（adjust 仅此时有效，默认 qfq）。时间格式 YYYY-MM-DD HH:mm（港股本地时区 Asia/Hong_Kong）。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "港股代码，如 00700 / hk00700；亦接受特殊指数代码（如 HSHCI）"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "1",
+            "5",
+            "15",
+            "30",
+            "60"
+          ],
+          "default": "1",
+          "description": "分钟周期；1=当日分时"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "qfq",
+          "description": "复权：qfq=前复权(默认,看走势) / hfq=后复权(算收益) / ''=不复权"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "开始时间 YYYY-MM-DD HH:mm（港股本地时区）"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束时间 YYYY-MM-DD HH:mm（港股本地时区）"
+        },
+        "recentDays": {
+          "type": "integer",
+          "description": "仅 period=1 生效：返回最近 N 个交易日的分时，默认 1（当日）"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "kline.hkMinute"
+  },
+  {
+    "name": "get_us_history_kline",
+    "description": "美股历史 K 线（日 / 周 / 月，含复权，币种 USD）。代码支持裸 ticker（如 AAPL / BABA，自动解析交易所）或显式 secid（105.AAPL / 106.BABA）。复权默认 qfq；日期格式 YYYYMMDD。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "美股代码，裸 ticker（AAPL）或 secid（105.AAPL / 106.BABA）均可"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "daily",
+          "description": "历史 K 线周期"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "qfq",
+          "description": "复权：qfq=前复权(默认,看走势) / hfq=后复权(算收益) / ''=不复权"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "kline.us"
+  },
+  {
+    "name": "get_us_minute_kline",
+    "description": "美股分钟 K 线 / 当日分时（仅常规交易时段，不含盘前 / 盘后）。period=1 返回当日分时（不支持复权，可用 recentDays 取近 N 日）；period=5/15/30/60 返回分钟 K 线（adjust 仅此时有效，默认 qfq）。代码支持裸 ticker（AAPL）或 secid（105.AAPL）。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "美股代码，裸 ticker（AAPL）或 secid（105.AAPL / 106.BABA）均可"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "1",
+            "5",
+            "15",
+            "30",
+            "60"
+          ],
+          "default": "1",
+          "description": "分钟周期；1=当日分时"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "qfq",
+          "description": "复权：qfq=前复权(默认,看走势) / hfq=后复权(算收益) / ''=不复权"
+        },
+        "recentDays": {
+          "type": "integer",
+          "description": "仅 period=1 生效：返回最近 N 个交易日的分时，默认 1（当日）"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "kline.usMinute"
+  },
+  {
+    "name": "get_kline_with_indicators",
+    "tier": "core",
+    "description": "带技术指标的历史 K 线（A 股 / 港股 / 美股，market 不传自动按 symbol 识别）。周期默认 daily，复权默认按 SDK 默认（qfq）；日期支持 YYYYMMDD 或 YYYY-MM-DD。indicators 为对象，键取自 14 个指标：ma / macd / boll / kdj / rsi / wr / bias / cci / atr / obv / roc / dmi / sar / kc，每个键传 true 即用默认参数开启，或传配置对象（如 { ma: { periods: [5,10,20] }, macd: { short: 12, long: 26, signal: 9 } }）。A 股底层历史接口频控时按腾讯、新浪顺序切换备用源。SDK 会按指标依赖自动向前多取若干 bar 保证首日有效。舍入型指标(ma/macd/boll/kdj/rsi/wr/bias/cci/atr)可传 decimals 指定输出小数位(默认 3;obv/roc/dmi/sar/kc 输出不舍入)。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "股票代码。A 股 / 港股裸码即可（600519 / 00700）；美股支持裸 ticker（AAPL）或 secid（105.AAPL）"
+        },
+        "market": {
+          "type": "string",
+          "enum": [
+            "A",
+            "HK",
+            "US"
+          ],
+          "description": "市场类型 A / HK / US；不传则由 symbol 自动识别"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "daily",
+          "description": "历史 K 线周期"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "qfq",
+          "description": "复权：qfq=前复权(默认,看走势) / hfq=后复权(算收益) / ''=不复权"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD 或 YYYY-MM-DD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD 或 YYYY-MM-DD"
+        },
+        "indicators": {
+          "type": "object",
+          "description": "指标配置对象，键取自 ma / macd / boll / kdj / rsi / wr / bias / cci / atr / obv / roc / dmi / sar / kc；值为 true（默认参数）或配置对象。舍入型指标可传 decimals 指定输出小数位（默认 3）",
+          "properties": {
+            "ma": {
+              "description": "MA 均线，true 或配置对象 { periods: [5,10,20], type: sma|ema|wma, decimals }"
+            },
+            "macd": {
+              "description": "MACD，true 或配置对象 { short, long, signal, decimals }"
+            },
+            "boll": {
+              "description": "布林带，true 或配置对象 { period, stdDev, decimals }"
+            },
+            "kdj": {
+              "description": "KDJ，true 或配置对象 { period, kPeriod, dPeriod, decimals }"
+            },
+            "rsi": {
+              "description": "RSI，true 或配置对象 { periods, decimals }"
+            },
+            "wr": {
+              "description": "威廉指标 WR，true 或配置对象 { periods, decimals }"
+            },
+            "bias": {
+              "description": "BIAS 乖离率，true 或配置对象 { periods, decimals }"
+            },
+            "cci": {
+              "description": "CCI，true 或配置对象 { period, decimals }"
+            },
+            "atr": {
+              "description": "ATR 真实波幅，true 或配置对象 { period, decimals }"
+            },
+            "obv": {
+              "description": "OBV，true 或配置对象 { maPeriod }"
+            },
+            "roc": {
+              "description": "ROC，true 或配置对象 { period, signalPeriod }"
+            },
+            "dmi": {
+              "description": "DMI / ADX，true 或配置对象 { period, adxPeriod }"
+            },
+            "sar": {
+              "description": "SAR 抛物线，true 或配置对象 { afStart, afIncrement, afMax }"
+            },
+            "kc": {
+              "description": "Keltner 通道 KC，true 或配置对象 { emaPeriod, atrPeriod, multiplier }"
+            }
+          }
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "path": "kline.withIndicators"
+  },
+  {
+    "name": "get_kline_signals",
+    "description": "识别技术指标信号（A 股 / 港股 / 美股，market 不传按 symbol 自动识别）：MA / MACD / KDJ 金叉死叉、KDJ / RSI 超买超卖、BOLL 收盘突破、SAR 趋势反转，共 14 类。内部自动取带指标 K 线再逐日比对，返回每条信号的类型 / 日期 / 收盘价 / 附加值。MA 交叉周期由 maFast / maSlow 指定（默认 5 / 20），其余信号用常用默认阈值（KDJ 80/20、RSI period=6 的 70/30）。不传 startDate 会在全部历史上识别；只看近期请传 startDate 收窄窗口。周期默认 daily，复权默认 qfq。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "股票代码（A 股 / 港股 / 美股）"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "daily",
+          "description": "历史 K 线周期"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "qfq",
+          "description": "复权：qfq=前复权(默认,看走势) / hfq=后复权(算收益) / ''=不复权"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD"
+        },
+        "market": {
+          "type": "string",
+          "enum": [
+            "A",
+            "HK",
+            "US"
+          ],
+          "description": "市场类型 A / HK / US；不传则由 symbol 自动识别"
+        },
+        "maFast": {
+          "type": "integer",
+          "default": 5,
+          "description": "MA 金叉/死叉的快线周期，默认 5（须为正整数且小于 maSlow）"
+        },
+        "maSlow": {
+          "type": "integer",
+          "default": 20,
+          "description": "MA 金叉/死叉的慢线周期，默认 20（须为正整数且大于 maFast）"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "kline.signals"
+  },
+  {
+    "name": "get_chip_distribution",
+    "description": "A 股筹码分布 / 筹码峰（基于日 K 线 + 换手率本地计算，东方财富 CYQ 算法）：每日获利比例、平均成本、90/70 成本区间与集中度。days 默认 90；range 为分布回看窗口（默认 120 = 东财 App 口径，0 = 全量累计即 akshare 口径）；复权默认 qfq，对齐 akshare 输出请传 ''。histogram=last 可附带最新一日筹码峰形状。仅个股有意义（指数 / ETF 无换手率概念），长期停牌或极低换手个股的分布参考价值有限。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "股票代码，如 600519 / sh600519"
+        },
+        "days": {
+          "type": "integer",
+          "default": 90,
+          "description": "返回最近 N 个交易日的筹码分布序列，默认 90"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "qfq",
+          "description": "复权：qfq=前复权(默认,看走势) / hfq=后复权(算收益) / ''=不复权"
+        },
+        "range": {
+          "type": "integer",
+          "default": 120,
+          "description": "分布回看窗口(K 线根数)。默认 120 = 东财 App 显示口径；0 = 从上市首日全量累计(akshare stock_cyq_em 口径，计算量更大)"
+        },
+        "includeHistogram": {
+          "type": "string",
+          "enum": [
+            "last",
+            "all"
+          ],
+          "description": "筹码峰直方图(150 价格档的占比分布)：last=仅最后一日附带 / all=每日都附带；不传则不附带"
+        },
+        "decimals": {
+          "type": "integer",
+          "default": 3,
+          "description": "获利比例 / 集中度的舍入小数位，默认 3(价格类字段固定 2 位)"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "chips.cn"
+  },
+  {
+    "name": "get_hk_chip_distribution",
+    "description": "港股筹码分布 / 筹码峰（基于东财港股日 K 线 + 换手率本地计算，同 A 股 CYQ 算法）：每日获利比例、平均成本、90/70 成本区间与集中度。days 默认 90；range 默认 120（0 = 全量累计）。注意：价格档精度下限 0.01 元，低价仙股的直方图粒度偏粗；极低换手个股参考价值有限。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "港股代码，如 00700 / hk00700"
+        },
+        "days": {
+          "type": "integer",
+          "default": 90,
+          "description": "返回最近 N 个交易日的筹码分布序列，默认 90"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "qfq",
+          "description": "复权：qfq=前复权(默认,看走势) / hfq=后复权(算收益) / ''=不复权"
+        },
+        "range": {
+          "type": "integer",
+          "default": 120,
+          "description": "分布回看窗口(K 线根数)。默认 120 = 东财 App 显示口径；0 = 从上市首日全量累计(akshare stock_cyq_em 口径，计算量更大)"
+        },
+        "includeHistogram": {
+          "type": "string",
+          "enum": [
+            "last",
+            "all"
+          ],
+          "description": "筹码峰直方图(150 价格档的占比分布)：last=仅最后一日附带 / all=每日都附带；不传则不附带"
+        },
+        "decimals": {
+          "type": "integer",
+          "default": 3,
+          "description": "获利比例 / 集中度的舍入小数位，默认 3(价格类字段固定 2 位)"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "chips.hk"
+  },
+  {
+    "name": "get_us_chip_distribution",
+    "description": "美股筹码分布 / 筹码峰（基于东财美股日 K 线 + 换手率本地计算，同 A 股 CYQ 算法）：每日获利比例、平均成本、90/70 成本区间与集中度。days 默认 90；range 默认 120（0 = 全量累计）。换手率为东财口径（交易所公开成交量 / 流通股本），不含暗池细节。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "美股代码，裸 ticker（AAPL）或 secid（105.AAPL / 106.BABA）均可"
+        },
+        "days": {
+          "type": "integer",
+          "default": 90,
+          "description": "返回最近 N 个交易日的筹码分布序列，默认 90"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "qfq",
+          "description": "复权：qfq=前复权(默认,看走势) / hfq=后复权(算收益) / ''=不复权"
+        },
+        "range": {
+          "type": "integer",
+          "default": 120,
+          "description": "分布回看窗口(K 线根数)。默认 120 = 东财 App 显示口径；0 = 从上市首日全量累计(akshare stock_cyq_em 口径，计算量更大)"
+        },
+        "includeHistogram": {
+          "type": "string",
+          "enum": [
+            "last",
+            "all"
+          ],
+          "description": "筹码峰直方图(150 价格档的占比分布)：last=仅最后一日附带 / all=每日都附带；不传则不附带"
+        },
+        "decimals": {
+          "type": "integer",
+          "default": 3,
+          "description": "获利比例 / 集中度的舍入小数位，默认 3(价格类字段固定 2 位)"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "chips.us"
+  },
+  {
+    "name": "get_industry_list",
+    "description": "获取行业板块列表（东方财富）：板块代码、名称、最新价、涨跌幅、成交额、领涨股等。无参。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "board.industry.list"
+  },
+  {
+    "name": "get_industry_spot",
+    "description": "获取指定行业板块的实时行情指标（最新、最高、最低、开盘、成交量额、涨跌幅、振幅、换手率等），返回 `{ item, value }[]`。成分股列表请用 `constituents`；成分股行情亦见 `constituents`（含价格/涨跌幅）。symbol 为行业板块代码（如 BK0475）或名称。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "行业板块代码（如 BK0475）或板块名称"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "board.industry.spot"
+  },
+  {
+    "name": "get_industry_constituents",
+    "description": "获取指定行业板块的成分股列表（代码、名称等基础信息）。symbol 为行业板块代码（如 BK0475）或名称。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "行业板块代码（如 BK0475）或板块名称"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "board.industry.constituents"
+  },
+  {
+    "name": "get_industry_kline",
+    "description": "获取行业板块历史 K 线（日/周/月）：日期、开高低收、成交量额、涨跌幅。价格单位为元。复权默认不复权，需前/后复权请显式传 adjust。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "行业板块代码（如 BK0475）或板块名称"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "daily",
+          "description": "历史 K 线周期"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "",
+          "description": "复权方式，默认不复权（''）；需前复权传 qfq（看走势），后复权传 hfq（算收益）"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "board.industry.kline"
+  },
+  {
+    "name": "get_industry_minute_kline",
+    "description": "获取行业板块分时/分钟 K 线。period=1 返回当日分时；5/15/30/60 返回对应分钟 K 线。默认 5（5 分钟 K 线），当日分时请传 period=1。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "行业板块代码（如 BK0475）或板块名称"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "1",
+            "5",
+            "15",
+            "30",
+            "60"
+          ],
+          "default": "5",
+          "description": "分钟周期；默认 5（5 分钟 K 线），当日分时请传 period=1"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "board.industry.minuteKline"
+  },
+  {
+    "name": "get_concept_list",
+    "description": "获取概念板块列表（东方财富）：板块代码、名称、最新价、涨跌幅、成交额、领涨股等。无参。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "board.concept.list"
+  },
+  {
+    "name": "get_concept_spot",
+    "description": "获取指定概念板块的实时行情指标（最新、最高、最低、开盘、成交量额、涨跌幅、振幅、换手率等），返回 `{ item, value }[]`。成分股列表请用 `constituents`；成分股行情亦见 `constituents`（含价格/涨跌幅）。symbol 为概念板块代码（如 BK0815）或名称。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "概念板块代码（如 BK0815）或板块名称"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "board.concept.spot"
+  },
+  {
+    "name": "get_concept_constituents",
+    "description": "获取指定概念板块的成分股列表（代码、名称等基础信息）。symbol 为概念板块代码（如 BK0815）或名称。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "概念板块代码（如 BK0815）或板块名称"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "board.concept.constituents"
+  },
+  {
+    "name": "get_concept_kline",
+    "description": "获取概念板块历史 K 线（日/周/月）：日期、开高低收、成交量额、涨跌幅。价格单位为元。复权默认不复权，需前/后复权请显式传 adjust。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "概念板块代码（如 BK0815）或板块名称"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "daily",
+          "description": "历史 K 线周期"
+        },
+        "adjust": {
+          "type": "string",
+          "enum": [
+            "qfq",
+            "hfq",
+            ""
+          ],
+          "default": "",
+          "description": "复权方式，默认不复权（''）；需前复权传 qfq（看走势），后复权传 hfq（算收益）"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "board.concept.kline"
+  },
+  {
+    "name": "get_concept_minute_kline",
+    "description": "获取概念板块分时/分钟 K 线。period=1 返回当日分时；5/15/30/60 返回对应分钟 K 线。默认 5（5 分钟 K 线），当日分时请传 period=1。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "概念板块代码（如 BK0815）或板块名称"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "1",
+            "5",
+            "15",
+            "30",
+            "60"
+          ],
+          "default": "5",
+          "description": "分钟周期；默认 5（5 分钟 K 线），当日分时请传 period=1"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "board.concept.minuteKline"
+  },
+  {
+    "name": "get_index_option_spot",
+    "description": "获取中金所股指期权 T 型实时报价（认购/认沽分列）。product=产品代码(ho/io/mo)；contract=合约月份。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "product": {
+          "type": "string",
+          "enum": [
+            "ho",
+            "io",
+            "mo"
+          ],
+          "description": "产品代码：ho / io / mo"
+        },
+        "contract": {
+          "type": "string",
+          "description": "合约（月份），如 2406"
+        }
+      },
+      "required": [
+        "product",
+        "contract"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "options.index.spot"
+  },
+  {
+    "name": "get_index_option_kline",
+    "description": "获取中金所股指期权某合约的日 K 线。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "期权合约代码"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "options.index.kline"
+  },
+  {
+    "name": "get_etf_option_months",
+    "description": "获取 ETF 期权可交易月份列表（含标的/品种信息）。cate=期权品种。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "cate": {
+          "type": "string",
+          "enum": [
+            "50ETF",
+            "300ETF",
+            "500ETF",
+            "科创50",
+            "科创板50"
+          ],
+          "description": "期权品种：50ETF / 300ETF / 500ETF / 科创50 / 科创板50"
+        }
+      },
+      "required": [
+        "cate"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "options.etf.months"
+  },
+  {
+    "name": "get_etf_option_expire_day",
+    "description": "获取 ETF 期权指定月份的到期日与剩余天数。month 格式 YYYY-MM（如 2024-06），可直接取自 get_etf_option_months 返回的月份。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "cate": {
+          "type": "string",
+          "enum": [
+            "50ETF",
+            "300ETF",
+            "500ETF",
+            "科创50",
+            "科创板50"
+          ],
+          "description": "期权品种：50ETF / 300ETF / 500ETF / 科创50 / 科创板50"
+        },
+        "month": {
+          "type": "string",
+          "description": "月份 YYYY-MM，如 2024-06（可取自 get_etf_option_months 返回的月份）"
+        }
+      },
+      "required": [
+        "cate",
+        "month"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "options.etf.expireDay"
+  },
+  {
+    "name": "get_etf_option_minute",
+    "description": "获取 ETF 期权某合约的当日分时数据（价格、成交量、持仓量、均价）。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "期权合约代码"
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "options.etf.minute"
+  },
+  {
+    "name": "get_etf_option_daily_kline",
+    "description": "获取 ETF 期权某合约的日 K 线。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "期权合约代码"
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "options.etf.dailyKline"
+  },
+  {
+    "name": "get_etf_option_five_day_minute",
+    "description": "获取 ETF 期权某合约的近 5 日分时数据。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "期权合约代码"
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "options.etf.fiveDayMinute"
+  },
+  {
+    "name": "get_commodity_option_spot",
+    "description": "获取商品期权 T 型实时报价（认购/认沽分列）。variety=品种代码（如 cu/m/au）；contract=合约月份。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "variety": {
+          "type": "string",
+          "description": "品种代码，如 cu / m / au"
+        },
+        "contract": {
+          "type": "string",
+          "description": "合约（月份），如 2406"
+        }
+      },
+      "required": [
+        "variety",
+        "contract"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "options.commodity.spot"
+  },
+  {
+    "name": "get_commodity_option_kline",
+    "description": "获取商品期权某合约的日 K 线。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "期权合约代码"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "options.commodity.kline"
+  },
+  {
+    "name": "get_cffex_option_quotes",
+    "description": "获取中金所全部期权实时行情列表（价格、涨跌、成交、持仓、行权价、剩余天数等）。⚠️ 体积大：默认 pageSize=20000 返回全市场合约。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "pageSize": {
+          "type": "integer",
+          "description": "每页条数，默认 20000"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "options.cffex.quotes"
+  },
+  {
+    "name": "get_option_lhb",
+    "description": "获取期权龙虎榜（按标的与日期，含成交量/持仓量排名、会员席位、净买卖等）。date 格式 YYYY-MM-DD。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "期权标的/合约代码"
+        },
+        "date": {
+          "type": "string",
+          "description": "日期 YYYY-MM-DD，如 2024-06-03"
+        }
+      },
+      "required": [
+        "symbol",
+        "date"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "options.lhb"
+  },
+  {
+    "name": "get_futures_kline",
+    "description": "获取国内期货历史 K 线（东财）：开高低收、成交量、持仓量等。symbol 为合约代码，如 rb2605(螺纹钢) / IF2604(沪深300股指) / au2606(黄金)，period 默认 daily(日线)，startDate/endDate 为 YYYYMMDD。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "期货合约代码，如 rb2605 / IF2604 / au2606"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "daily",
+          "description": "历史 K 线周期"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "futures.kline"
+  },
+  {
+    "name": "get_global_futures_spot",
+    "description": "获取全球期货实时行情（东财）：国际原油、黄金、外盘指数期货等的最新价、涨跌幅、成交量。pageSize 为每页条数，默认 20。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "pageSize": {
+          "type": "integer",
+          "description": "每页条数，默认 20"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "futures.globalSpot"
+  },
+  {
+    "name": "get_global_futures_kline",
+    "description": "获取全球期货历史 K 线（东财）：开高低收、成交量等。symbol 为合约代码，period 默认 daily，startDate/endDate 为 YYYYMMDD。marketCode 为东财市场代码（用于未内置品种，可从全球期货实时行情结果反查）。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "全球期货合约代码，如 CONC(WTI 原油) / GC00Y(COMEX 黄金)"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "daily",
+          "description": "历史 K 线周期"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD"
+        },
+        "marketCode": {
+          "type": "integer",
+          "description": "东财市场代码（未内置品种时手动指定）"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "futures.globalKline"
+  },
+  {
+    "name": "get_futures_inventory_symbols",
+    "description": "获取期货库存品种列表（东财）：可查库存的品种代码与名称，供 get_futures_inventory 使用。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "futures.inventorySymbols"
+  },
+  {
+    "name": "get_futures_inventory",
+    "description": "获取指定品种的期货库存历史（东财）：交易所注册仓单 / 库存量及增减。symbol 为品种代码（见 get_futures_inventory_symbols），startDate 为 YYYY-MM-DD(默认 2020-10-28)。pageSize 仅为单页批量大小（默认 500），接口返回全量历史，过大时会被裁剪。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "库存品种代码（见 get_futures_inventory_symbols）"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "开始日期 YYYY-MM-DD，默认 2020-10-28"
+        },
+        "pageSize": {
+          "type": "integer",
+          "description": "单页批量大小，默认 500；接口返回全量历史，过大时会被裁剪"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "futures.inventory"
+  },
+  {
+    "name": "get_comex_inventory",
+    "description": "获取 COMEX 黄金 / 白银库存历史（东财）：注册库存、合格库存及总量变化。symbol 必填，取 'gold'(黄金) 或 'silver'(白银)。pageSize 仅为单页批量大小（默认 500），接口返回全量历史，过大时会被裁剪。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "enum": [
+            "gold",
+            "silver"
+          ],
+          "description": "品种：gold=黄金 / silver=白银"
+        },
+        "pageSize": {
+          "type": "integer",
+          "description": "单页批量大小，默认 500；接口返回全量历史，过大时会被裁剪"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "futures.comexInventory"
+  },
+  {
+    "name": "get_individual_fund_flow",
+    "description": "获取个股资金流历史（日 / 周 / 月）：主力 / 超大单 / 大单 / 中单 / 小单净流入（金额单位元、占比为百分比）。⏰ 盘后数据：上游收盘后统计发布，盘中查当天取不到当天数据，最新通常为上一交易日——属正常时效，如实说明即可，不要报错或臆测原因。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "股票代码，带不带 sh/sz/bj 前缀均可，如 600519 / sh600519"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "daily",
+          "description": "资金流统计周期（日 / 周 / 月）"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "fundFlow.individual"
+  },
+  {
+    "name": "get_market_fund_flow",
+    "description": "获取大盘资金流（上证综指 + 深证成指(399001)）：各分类资金净流入金额（元）与占比（%）。⏰ 盘后数据：上游收盘后统计发布，盘中查当天取不到当天数据，最新通常为上一交易日——属正常时效，如实说明即可，不要报错或臆测原因。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "fundFlow.market"
+  },
+  {
+    "name": "get_fund_flow_rank",
+    "description": "获取个股资金流排名（沪深北 A 股全市场）：按主力净流入排序，金额单位元、占比为百分比。用 page / pageSize 分页（page 从 1 开始，每页最多 100 条），只请求一页；都不传时拉取全市场全量（约 5600 条、数十次请求），MCP tools/call 会裁剪至前 200 条。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "indicator": {
+          "type": "string",
+          "enum": [
+            "today",
+            "3day",
+            "5day",
+            "10day"
+          ],
+          "default": "today",
+          "description": "排名周期：today=今日(默认) / 3day / 5day / 10day"
+        },
+        "page": {
+          "type": "integer",
+          "description": "页码，从 1 开始；传 page / pageSize 任一即只请求这一页，都不传则自动翻页返回全量"
+        },
+        "pageSize": {
+          "type": "integer",
+          "description": "每页条数，1-100，默认 100（仅分页时生效）"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "fundFlow.rank"
+  },
+  {
+    "name": "get_sector_fund_flow_rank",
+    "description": "获取板块资金流排名（行业 / 概念 / 地域）：按板块主力净流入排序，金额单位元、占比为百分比。可用 page / pageSize 分页（page 从 1 开始，每页最多 100 条）；不传返回全部板块。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "indicator": {
+          "type": "string",
+          "enum": [
+            "today",
+            "3day",
+            "5day",
+            "10day"
+          ],
+          "default": "today",
+          "description": "排名周期：today=今日(默认) / 3day / 5day / 10day"
+        },
+        "sectorType": {
+          "type": "string",
+          "enum": [
+            "industry",
+            "concept",
+            "region"
+          ],
+          "default": "industry",
+          "description": "板块类型：industry=行业(默认) / concept=概念 / region=地域"
+        },
+        "page": {
+          "type": "integer",
+          "description": "页码，从 1 开始；传 page / pageSize 任一即只请求这一页，都不传则自动翻页返回全量"
+        },
+        "pageSize": {
+          "type": "integer",
+          "description": "每页条数，1-100，默认 100（仅分页时生效）"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "fundFlow.sectorRank"
+  },
+  {
+    "name": "get_sector_fund_flow_history",
+    "description": "获取单个板块的历史资金流（日 / 周 / 月）：各分类资金净流入金额（元）与占比（%）。symbol 为板块编号，如 BK0438 或全前缀 90.BK0438。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "板块编号，如 BK0438 或全前缀 90.BK0438"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly"
+          ],
+          "default": "daily",
+          "description": "资金流统计周期（日 / 周 / 月）"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "fundFlow.sectorHistory"
+  },
+  {
+    "name": "get_northbound_minute",
+    "description": "获取北向 / 南向资金分时数据（当日，按 HH:MM）。返回沪/深分项与合计净流入（单位:万元）。direction:north=北向(默认) / south=南向。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "direction": {
+          "type": "string",
+          "enum": [
+            "north",
+            "south"
+          ],
+          "default": "north",
+          "description": "资金方向:north=北向(默认) / south=南向"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "northbound.minute"
+  },
+  {
+    "name": "get_northbound_flow_summary",
+    "description": "获取沪深港通市场资金流向汇总（北向 + 南向 + 港股通拆分）：含板块名、净买额/净流入(元)、当日余额、相关指数涨跌幅等。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "northbound.summary"
+  },
+  {
+    "name": "get_northbound_holding_rank",
+    "description": "获取北向 / 沪股通 / 深股通持股个股排行：含持股股数、持股市值(元)、占流通股/总股本比(%)、区间增持估计等。market:all(默认)/shanghai/shenzhen;period 默认 5day;date 须为有数据的交易日，否则返回空。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "market": {
+          "type": "string",
+          "enum": [
+            "all",
+            "shanghai",
+            "shenzhen"
+          ],
+          "default": "all",
+          "description": "市场:all(默认) / shanghai=沪股通 / shenzhen=深股通"
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "today",
+            "3day",
+            "5day",
+            "10day",
+            "month",
+            "quarter",
+            "year"
+          ],
+          "default": "5day",
+          "description": "排名周期:today / 3day / 5day(默认) / 10day / month / quarter / year"
+        },
+        "date": {
+          "type": "string",
+          "description": "指定交易日 YYYY-MM-DD（默认服务端最新交易日）"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "northbound.holdingRank"
+  },
+  {
+    "name": "get_northbound_history",
+    "description": "获取北向 / 南向资金历史（按日）：成交净买额、买/卖成交额、历史累计净买额、当日资金流入/余额(元)及领涨股。direction:north(默认)/south;不传 startDate/endDate 取全量区间。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "direction": {
+          "type": "string",
+          "enum": [
+            "north",
+            "south"
+          ],
+          "default": "north",
+          "description": "资金方向:north=北向(默认) / south=南向"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYY-MM-DD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYY-MM-DD"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "northbound.history"
+  },
+  {
+    "name": "get_northbound_individual",
+    "description": "获取个股的北向持仓历史（按日）：持股数量、持股市值(元)、占流通股/总股本比(%)、当日收盘价与涨跌幅。不传 startDate/endDate 取全量区间。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "单只股票代码，如 600519 / sh600519"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYY-MM-DD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYY-MM-DD"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "northbound.individual"
+  },
+  {
+    "name": "get_zt_pool",
+    "description": "获取涨停股池（东方财富）：涨停 / 昨日涨停 / 强势 / 次新 / 炸板 / 跌停。字段含价格(元)、涨跌幅(%)、成交额(元)、流通/总市值(元)、换手率(%)、连板数、封板时间(HHMMSS) 等。type 默认 zt；date 不传为最新交易日。⏰ 盘中实时数据：交易时段内滚动更新，同一天不同时点查询条数会不同（早盘少、尾盘多），属正常现象；要当日最终结果请收盘后查询。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "zt",
+            "yesterday",
+            "strong",
+            "sub_new",
+            "broken",
+            "dt"
+          ],
+          "default": "zt",
+          "description": "股池类型：zt=涨停 / yesterday=昨日涨停 / strong=强势 / sub_new=次新 / broken=炸板 / dt=跌停"
+        },
+        "date": {
+          "type": "string",
+          "description": "日期 YYYYMMDD 或 YYYY-MM-DD，不传为最新交易日"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "marketEvent.ztPool"
+  },
+  {
+    "name": "get_stock_changes",
+    "description": "获取当日盘口异动列表（东方财富）：每条含发生时间(HH:MM:SS)、代码、名称、异动类型(changeType/typeCode)及中文标签、相关信息。type 不传默认 large_buy(大笔买入);传 'all' 一次拉取全部 22 类(总量可达上万条,自动翻页收全,MCP tools/call 超 200 条会被裁剪)。数据量大时用 page / pageSize 分页(page 从 1 开始)逐页获取。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "rocket_launch",
+            "quick_rebound",
+            "large_buy",
+            "limit_up_seal",
+            "limit_down_open",
+            "big_buy_order",
+            "auction_up",
+            "high_open_5d",
+            "gap_up",
+            "high_60d",
+            "surge_60d",
+            "accelerate_down",
+            "high_dive",
+            "large_sell",
+            "limit_down_seal",
+            "limit_up_open",
+            "big_sell_order",
+            "auction_down",
+            "low_open_5d",
+            "gap_down",
+            "low_60d",
+            "drop_60d",
+            "all"
+          ],
+          "default": "large_buy",
+          "description": "异动类型筛选(all=全部 22 类)：rocket_launch=火箭发射 / quick_rebound=快速反弹 / large_buy=大笔买入 / limit_up_seal=封涨停板 / limit_down_open=打开跌停板 / big_buy_order=有大买盘 / auction_up=竞价上涨 / high_open_5d=高开5日线 / gap_up=向上缺口 / high_60d=60日新高 / surge_60d=60日大幅上涨 / accelerate_down=加速下跌 / high_dive=高台跳水 / large_sell=大笔卖出 / limit_down_seal=封跌停板 / limit_up_open=打开涨停板 / big_sell_order=有大卖盘 / auction_down=竞价下跌 / low_open_5d=低开5日线 / gap_down=向下缺口 / low_60d=60日新低 / drop_60d=60日大幅下跌"
+        },
+        "page": {
+          "type": "integer",
+          "description": "页码，从 1 开始；传 page / pageSize 任一即只请求这一页，都不传则自动翻页返回全量"
+        },
+        "pageSize": {
+          "type": "integer",
+          "description": "每页条数，1-5000，默认 100（仅分页时生效）；MCP 单次最多返回 200 条，建议不超过 200"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "marketEvent.stockChanges"
+  },
+  {
+    "name": "get_individual_stock_changes",
+    "description": "获取单只 A 股某个交易日的盘口异动事件流（东方财富）：时间、类型(changeType/typeCode,含中文标签)、触发价(元)、涨跌幅(%)、相关信息;全部类型一次返回,最新在前。date 不传为今天。注意:服务端仅保留约最近数周数据(且可能有个别日期空洞),无数据日期返回空数组;需要区分\"超窗\"与\"当日无异动\"请用 get_individual_stock_changes_history(逐日带 available 标记)。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "股票代码，如 600519 / sh600519"
+        },
+        "date": {
+          "type": "string",
+          "description": "交易日 YYYYMMDD 或 YYYY-MM-DD;不传为北京时间今天"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "marketEvent.individualChanges"
+  },
+  {
+    "name": "get_individual_stock_changes_history",
+    "description": "聚合单只 A 股最近 N 个自然日的盘口异动（按交易日历逐交易日请求后合并）：days 数组按日期升序,每日含 available 标记与事件流;coverage 标注实际覆盖范围(服务端仅保留约最近数周且可能有空洞日,无数据日期 available=false);stats 以原始类型码为键给出各类型计数(含中文标签)。days 默认 7,范围 1~60。⚠️ 返回为嵌套对象:序列化超约 80KB 会被整体省略(仅返回提示,拿不到任何数据);事件多的活跃标的请用较小 days 分段查询,或改用 get_individual_stock_changes 逐日获取。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "股票代码，如 600519 / sh600519"
+        },
+        "days": {
+          "type": "integer",
+          "default": 7,
+          "description": "最近 N 个自然日,默认 7,最大 60"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "marketEvent.individualChangesHistory"
+  },
+  {
+    "name": "get_board_changes",
+    "description": "获取当日板块异动汇总（东方财富）：每条含板块名称、涨跌幅(%)、主力净流入(元)、异动总次数、异动最频繁个股（代码 / 名称 / 方向）及异动类型分布。无参。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "marketEvent.boardChanges"
+  },
+  {
+    "name": "get_unusual_fluctuation",
+    "description": "获取交易所「股票交易异常波动」监管预警（东方财富）：每条含代码、名称、交易日、触发规则原文（如「连续十个交易日内日收盘价涨跌幅偏离值累计达到+100%」）、是否已触发、累计涨跌幅偏离值(%)、规则窗口天数、当日涨跌幅(%)、异动方向(up/down)。triggered=true 仅看已触发，false 仅看逼近阈值但未触发，缺省返回全部。date 查单日；startDate/endDate 查区间，两者互斥；均缺省时返回上游全部留存数据（约两个月、数千条，建议收窄）。⏰ 日频盘后数据：收盘后统计发布，盘中查当天可能无数据，属正常时效。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "指定交易日 YYYYMMDD 或 YYYY-MM-DD（与 startDate/endDate 互斥）"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "起始交易日 YYYYMMDD 或 YYYY-MM-DD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束交易日 YYYYMMDD 或 YYYY-MM-DD"
+        },
+        "triggered": {
+          "type": "boolean",
+          "description": "true 仅返回已触发，false 仅返回逼近未触发；缺省全部"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "marketEvent.unusualFluctuation"
+  },
+  {
+    "name": "get_dragon_tiger_detail",
+    "description": "获取龙虎榜上榜个股明细（按日期范围）：代码、名称、上榜日期、收盘价、涨跌幅(%)、净买额/买入额/卖出额/成交额(元)、占总成交比(%)、换手率(%)、流通市值(元)、上榜原因、上榜后 1/2/5/10 日涨跌幅(%)。日期格式 YYYYMMDD，startDate / endDate 均必填。⏰ 龙虎榜是盘后数据：交易所收盘后统计、傍晚才发布，因此盘中查询当天日期必然没有当天数据——这是正常时效，不要报错或臆测原因，如实说明「当日数据要等收盘后傍晚发布」即可。日期区间过大时 MCP tools/call 超 200 条会被裁剪，请收窄区间；SDK 直连返回全量。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD"
+        }
+      },
+      "required": [
+        "startDate",
+        "endDate"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "dragonTiger.detail"
+  },
+  {
+    "name": "get_dragon_tiger_stock_stats",
+    "description": "获取龙虎榜个股上榜统计（按周期聚合）：代码、名称、最近上榜日、收盘价、涨跌幅(%)、上榜次数、累计买入/卖出/净额/成交额(元)、累计买/卖方机构次数。period 可选，默认 1month。⚠️ MCP tools/call 超 200 条会被裁剪；SDK 直连返回全量。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "type": "string",
+          "enum": [
+            "1month",
+            "3month",
+            "6month",
+            "1year"
+          ],
+          "default": "1month",
+          "description": "统计周期：1month / 3month / 6month / 1year，默认 1month"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "dragonTiger.stockStats"
+  },
+  {
+    "name": "get_dragon_tiger_institution",
+    "description": "获取龙虎榜机构买卖明细（按日期范围）：代码、名称、上榜日期、收盘价、涨跌幅(%)、买/卖方机构数、机构买入额/卖出额/净额(元)。日期格式 YYYYMMDD，startDate / endDate 均必填。⏰ 龙虎榜是盘后数据：交易所收盘后统计、傍晚才发布，因此盘中查询当天日期必然没有当天数据——这是正常时效，不要报错或臆测原因，如实说明「当日数据要等收盘后傍晚发布」即可。日期区间过大时 MCP tools/call 超 200 条会被裁剪，请收窄区间；SDK 直连返回全量。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD"
+        }
+      },
+      "required": [
+        "startDate",
+        "endDate"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "dragonTiger.institution"
+  },
+  {
+    "name": "get_dragon_tiger_branch_rank",
+    "description": "获取龙虎榜营业部（席位）排行（按周期聚合）：营业部代码、名称、买入总额/卖出总额(元)、买入/卖出次数、上榜次数。period 可选，默认 1month。⚠️ MCP tools/call 超 200 条会被裁剪；SDK 直连返回全量。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "type": "string",
+          "enum": [
+            "1month",
+            "3month",
+            "6month",
+            "1year"
+          ],
+          "default": "1month",
+          "description": "统计周期：1month / 3month / 6month / 1year，默认 1month"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "dragonTiger.branchRank"
+  },
+  {
+    "name": "get_dragon_tiger_seat_detail",
+    "description": "获取个股某日龙虎榜席位明细：排名、营业部名称、买入额/卖出额/净额(元)、买入/卖出占总成交比(%)、买卖方向(buy/sell)。symbol 与 date 均必填；date 支持 YYYYMMDD 或 YYYY-MM-DD。⏰ 龙虎榜是盘后数据（收盘后统计、傍晚发布），date 传当天且在盘中查询必然为空，属正常时效。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "单只股票代码，如 600519 / sh600519"
+        },
+        "date": {
+          "type": "string",
+          "description": "上榜日期，YYYYMMDD 或 YYYY-MM-DD"
+        }
+      },
+      "required": [
+        "symbol",
+        "date"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "dragonTiger.seatDetail"
+  },
+  {
+    "name": "get_block_trade_market_stat",
+    "description": "获取大宗交易市场每日总览（成交额、溢价率、买卖方统计等）。⏰ 盘后数据：上游收盘后统计发布，盘中查当天取不到当天数据，最新通常为上一交易日——属正常时效，如实说明即可，不要报错或臆测原因。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "blockTrade.marketStat"
+  },
+  {
+    "name": "get_block_trade_detail",
+    "description": "获取大宗交易明细（按日期范围筛选）：成交价、成交量、买卖营业部等。省略日期则默认最近一段时间。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD 或 YYYY-MM-DD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD 或 YYYY-MM-DD"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "blockTrade.detail"
+  },
+  {
+    "name": "get_block_trade_daily_stat",
+    "description": "获取大宗交易每日统计（按股票汇总）：成交笔数、成交额、溢价率等。省略日期则默认最近一段时间。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "description": "起始日期 YYYYMMDD 或 YYYY-MM-DD"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "结束日期 YYYYMMDD 或 YYYY-MM-DD"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "blockTrade.dailyStat"
+  },
+  {
+    "name": "get_margin_account_info",
+    "description": "获取融资融券账户统计（融资余额、融券余量、两融余额等）。⏰ 两融数据滞后一个交易日：交易所次一交易日才公布，最新一条通常是上一交易日——属正常时效，不要报错或臆测原因。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "margin.accountInfo"
+  },
+  {
+    "name": "get_margin_target_list",
+    "description": "获取融资融券标的明细列表（可融资 / 可融券标志、折算率等）。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "交易日 YYYYMMDD 或 YYYY-MM-DD；不传则取最新可用日期"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "margin.targetList"
+  },
+  {
+    "name": "get_fund_dividend_list",
+    "description": "获取基金分红明细列表（东方财富分红送配频道）。接口仅支持「年份+全市场+翻页」查询，不支持服务端按代码精确查；要拿单只基金完整分红记录请同时设 page='all' 与 code（code 为客户端过滤）。默认拉当前年第 1 页、按除息日(FSRQ)倒序。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "year": {
+          "type": "string",
+          "description": "查询年份，如 \"2026\"；默认当前年（Asia/Shanghai）"
+        },
+        "page": {
+          "type": "string",
+          "description": "页码（从 1 开始）的数字字符串，或 'all' 自动翻完该年所有页并聚合；默认 1"
+        },
+        "fundType": {
+          "type": "string",
+          "description": "基金类型筛选，空表示全部，如 '股票型' / '指数型-股票' / '混合型-偏股' / 'REITs'"
+        },
+        "rank": {
+          "type": "string",
+          "enum": [
+            "BZDM",
+            "ABBNAME",
+            "DJR",
+            "FSRQ",
+            "FHFCZ",
+            "FFR"
+          ],
+          "default": "FSRQ",
+          "description": "排序字段：BZDM=基金代码 / ABBNAME=基金简称 / DJR=权益登记日 / FSRQ=除息日期(默认) / FHFCZ=分红(元/份) / FFR=分红发放日"
+        },
+        "sort": {
+          "type": "string",
+          "enum": [
+            "asc",
+            "desc"
+          ],
+          "default": "desc",
+          "description": "排序方向：asc=升序 / desc=降序(默认)"
+        },
+        "code": {
+          "type": "string",
+          "description": "按基金代码过滤（客户端过滤），一般搭配 page='all' 使用"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "fund.dividendList"
+  },
+  {
+    "name": "get_fund_nav_history",
+    "description": "获取基金历史净值（单位净值 + 累计净值，全历史一次返回，按日期升序）。开放式 / ETF / LOF / 货币 / QDII 均通用。⚠️ 体积大：全历史数千条、响应体约 600KB，建议应用层缓存。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "基金代码，纯数字，如 110011"
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "fund.navHistory"
+  },
+  {
+    "name": "get_fund_rank_history",
+    "description": "获取基金同类排名走势（每日近三月排名 + 同类总数 + 排名百分位 %，按日期升序）。适合画「该基金在同类里的相对表现」折线图。数据源同 get_fund_nav_history。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "基金代码，纯数字，如 110011"
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "fund.rankHistory"
+  },
+  {
+    "name": "get_fund_profile",
+    "description": "一次请求获取基金深度资料（东方财富 pingzhongdata 全量字段）：前十大重仓股、前五大债券、季度资产配置、每日股票仓位测算、基金经理（含星级与能力评分）、业绩评价、持有人结构、规模变动、申购赎回、阶段收益率（近1月/3月/6月/1年）、同类基金等。字段随基金类型与数据完整度可能为空。与 navHistory / rankHistory 同源（同一份 pingzhongdata 文件，约 600KB），建议应用层缓存。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "基金代码，纯数字，如 000001"
+        }
+      },
+      "required": [
+        "code"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "fund.profile"
+  },
+  {
+    "name": "get_theme_list",
+    "description": "获取主题基金列表（东方财富天天基金），可筛选行业/概念主题类型，按日涨幅/各阶段收益率排序分页。返回主题代码(code)、名称(name)、日涨幅及各阶段收益率。category=0(行业)/1(概念)/2(全部，默认)。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "sort": {
+          "type": "string",
+          "description": "排序字段：ZDF(日涨幅)/SYL_W(近1周)/SYL_M(近1月)/SYL_3M(近3月)/SYL_6M(近6月)/SYL_Y(近1年)/SYL_3Y(近3年)/SYL_5Y(近5年)，默认ZDF"
+        },
+        "order": {
+          "type": "string",
+          "enum": [
+            "desc",
+            "asc"
+          ],
+          "default": "desc",
+          "description": "排序方向：desc(降序，默认)/asc(升序)"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "0",
+            "1",
+            "2"
+          ],
+          "default": "2",
+          "description": "主题类型：0(行业)/1(概念)/2(全部，默认)"
+        },
+        "pageSize": {
+          "type": "integer",
+          "description": "每页条数，默认20，最大50"
+        },
+        "page": {
+          "type": "integer",
+          "description": "页码，默认1"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "fund.theme.getThemeList"
+  },
+  {
+    "name": "get_theme_funds",
+    "description": "获取指定主题下的基金排行列表（东方财富天天基金）。themeCode为主题代码（如BK0438=食品饮料）。可按日涨幅/各阶段收益率排序分页，返回基金代码、名称、基金类型、日涨幅及各阶段收益率、最新净值。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "主题代码，如 BK0438（食品饮料）"
+        },
+        "sortColumn": {
+          "type": "string",
+          "description": "排序字段：SYL_Z(近1周)/SYL_Y(近1月)/SYL_3Y(近3月)/SYL_1N(近1年，默认)/RZDF(日涨幅)"
+        },
+        "sort": {
+          "type": "string",
+          "enum": [
+            "desc",
+            "asc"
+          ],
+          "default": "desc",
+          "description": "排序方向：desc(降序，默认)/asc(升序)"
+        },
+        "pageSize": {
+          "type": "integer",
+          "description": "每页条数，默认10，最大30"
+        },
+        "page": {
+          "type": "integer",
+          "description": "页码，默认1"
+        },
+        "fundType": {
+          "type": "string",
+          "description": "基金类型筛选，如\"股票型\"/\"混合型\"，空表示全部"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "fund.theme.getThemeFunds"
+  },
+  {
+    "name": "is_trading_day",
+    "description": "判断某天是否为 A 股交易日（基于上游官方日历，能识别法定假日）。date 可选，支持 YYYY-MM-DD 或 YYYYMMDD；不传则判断今天。返回 boolean。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "日期 YYYY-MM-DD 或 YYYYMMDD；不传为今天"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "calendar.isTradingDay"
+  },
+  {
+    "name": "next_trading_day",
+    "description": "返回给定日期之后最近的一个 A 股交易日（YYYY-MM-DD）。date 可选，支持 YYYY-MM-DD 或 YYYYMMDD；不传则以今天为基准。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "基准日期 YYYY-MM-DD 或 YYYYMMDD；不传为今天"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "calendar.nextTradingDay"
+  },
+  {
+    "name": "prev_trading_day",
+    "description": "返回给定日期之前最近的一个 A 股交易日（YYYY-MM-DD）。date 可选，支持 YYYY-MM-DD 或 YYYYMMDD；不传则以今天为基准。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "description": "基准日期 YYYY-MM-DD 或 YYYYMMDD；不传为今天"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "calendar.prevTradingDay"
+  },
+  {
+    "name": "get_market_status",
+    "description": "获取市场当前实时状态：pre_market(盘前) / open(交易中) / lunch_break(午休) / after_hours(盘后) / closed(休市)。market 可选枚举 A/HK/US，默认 A。⚠️ 同步本地时钟判断、不发请求：A 股基于交易时段但不识别法定假日，港股/美股退化为'周一-周五 + 已知交易时段'近似。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "market": {
+          "type": "string",
+          "enum": [
+            "A",
+            "HK",
+            "US"
+          ],
+          "default": "A",
+          "description": "市场：A=A股 / HK=港股 / US=美股，默认 A"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "calendar.marketStatus"
+  },
+  {
+    "name": "get_dividend_detail",
+    "description": "获取 A 股分红配股明细：历年送转、派息（每 10 股派 X 元）、除权除息日、股权登记日等。代码带不带交易所前缀均可（如 600519 / sh600519）。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "description": "单只股票代码，如 600519 / sh600519"
+        }
+      },
+      "required": [
+        "symbol"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "reference.dividendDetail"
+  },
+  {
+    "name": "get_trading_calendar",
+    "description": "获取 A 股交易日历原始数组（升序 'YYYY-MM-DD' 字符串列表，来自腾讯接口，带 12 小时缓存）。⚠️ 体积大：返回数千个交易日。只需判断某日是否交易日 / 取上一或下一交易日时，优先用 calendar 命名空间下的工具，无需拉全量。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "tier": "full",
+    "path": "reference.tradingCalendar"
+  },
+  {
+    "name": "search",
+    "description": "模糊搜索股票 / 指数 / 基金（代码 / 名称 / 拼音）。返回 code、name、market、category。",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "keyword": {
+          "type": "string",
+          "description": "搜索关键词"
+        }
+      },
+      "required": [
+        "keyword"
+      ],
+      "additionalProperties": false
+    },
+    "tier": "core",
+    "path": "search"
+  }
+]

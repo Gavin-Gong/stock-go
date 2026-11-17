@@ -1,0 +1,195 @@
+[
+  {
+    "op": "set",
+    "key": "",
+    "value": "empty",
+    "now": 100000,
+    "expected": null
+  },
+  {
+    "op": "set",
+    "key": "a",
+    "value": 1,
+    "now": 100001,
+    "expected": null
+  },
+  {
+    "op": "get",
+    "key": "",
+    "now": 100002,
+    "expected": {
+      "found": true,
+      "value": "empty"
+    }
+  },
+  {
+    "op": "set",
+    "key": "b",
+    "value": 2,
+    "now": 100003,
+    "expected": null
+  },
+  {
+    "op": "get",
+    "key": "a",
+    "now": 100004,
+    "expected": {
+      "found": false,
+      "value": null
+    }
+  },
+  {
+    "op": "get",
+    "key": "",
+    "now": 100005,
+    "expected": {
+      "found": true,
+      "value": "empty"
+    }
+  },
+  {
+    "op": "set",
+    "key": "",
+    "value": "changed",
+    "now": 100006,
+    "expected": null
+  },
+  {
+    "op": "size",
+    "now": 100007,
+    "expected": 2
+  },
+  {
+    "op": "set",
+    "key": "nil",
+    "value": null,
+    "ttl": 0,
+    "now": 100008,
+    "expected": null
+  },
+  {
+    "op": "get",
+    "key": "nil",
+    "now": 100009,
+    "expected": {
+      "found": true,
+      "value": null
+    }
+  },
+  {
+    "op": "get",
+    "key": "b",
+    "now": 100010,
+    "expected": {
+      "found": false,
+      "value": null
+    }
+  },
+  {
+    "op": "advance",
+    "ms": 10,
+    "now": 100021,
+    "expected": null
+  },
+  {
+    "op": "get",
+    "key": "",
+    "now": 100022,
+    "expected": {
+      "found": false,
+      "value": null
+    }
+  },
+  {
+    "op": "advance",
+    "ms": 1,
+    "now": 100024,
+    "expected": null
+  },
+  {
+    "op": "get",
+    "key": "",
+    "now": 100025,
+    "expected": {
+      "found": false,
+      "value": null
+    }
+  },
+  {
+    "op": "size",
+    "now": 100026,
+    "expected": 1
+  },
+  {
+    "op": "set",
+    "key": "c",
+    "value": 3,
+    "now": 100027,
+    "expected": null
+  },
+  {
+    "op": "set",
+    "key": "d",
+    "value": 4,
+    "ttl": 2,
+    "now": 100028,
+    "expected": null
+  },
+  {
+    "op": "configure",
+    "maxSize": 1,
+    "now": 100029,
+    "expected": null
+  },
+  {
+    "op": "size",
+    "now": 100030,
+    "expected": 1
+  },
+  {
+    "op": "advance",
+    "ms": 3,
+    "now": 100034,
+    "expected": null
+  },
+  {
+    "op": "cleanup",
+    "now": 100035,
+    "expected": 1
+  },
+  {
+    "op": "size",
+    "now": 100036,
+    "expected": 0
+  },
+  {
+    "op": "delete",
+    "key": "missing",
+    "now": 100037,
+    "expected": false
+  },
+  {
+    "op": "set",
+    "key": "z",
+    "value": 9,
+    "ttl": 0,
+    "now": 100038,
+    "expected": null
+  },
+  {
+    "op": "delete",
+    "key": "z",
+    "now": 100039,
+    "expected": true
+  },
+  {
+    "op": "clear",
+    "now": 100040,
+    "expected": null
+  },
+  {
+    "op": "size",
+    "now": 100041,
+    "expected": 0
+  }
+]

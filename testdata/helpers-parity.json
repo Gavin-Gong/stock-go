@@ -1,0 +1,2401 @@
+[
+  {
+    "kind": "safeNumber",
+    "input": "",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "",
+    "expected": null
+  },
+  {
+    "kind": "toNumber",
+    "input": "",
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "",
+    "expected": null
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": " ",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": " ",
+    "expected": null
+  },
+  {
+    "kind": "toNumber",
+    "input": " ",
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": " ",
+    "expected": null
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": " ",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "-",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "-",
+    "expected": null
+  },
+  {
+    "kind": "toNumber",
+    "input": "-",
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "-",
+    "expected": null
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "-",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "--",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "--",
+    "expected": null
+  },
+  {
+    "kind": "toNumber",
+    "input": "--",
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "--",
+    "expected": null
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "--",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "0",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "0",
+    "expected": 0
+  },
+  {
+    "kind": "toNumber",
+    "input": "0",
+    "expected": 0
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "0",
+    "expected": 0
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "0",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumber",
+    "input": "-0",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "-0",
+    "expected": 0
+  },
+  {
+    "kind": "toNumber",
+    "input": "-0",
+    "expected": 0
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "-0",
+    "expected": 0
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "-0",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumber",
+    "input": "12.3%",
+    "expected": 12.3
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "12.3%",
+    "expected": 12.3
+  },
+  {
+    "kind": "toNumber",
+    "input": "12.3%",
+    "expected": 12.3
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "12.3%",
+    "expected": 12.3
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "12.3%",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "-4元",
+    "expected": -4
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "-4元",
+    "expected": -4
+  },
+  {
+    "kind": "toNumber",
+    "input": "-4元",
+    "expected": -4
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "-4元",
+    "expected": -4
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "-4元",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": " .5rest",
+    "expected": 0.5
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": " .5rest",
+    "expected": 0.5
+  },
+  {
+    "kind": "toNumber",
+    "input": " .5rest",
+    "expected": 0.5
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": " .5rest",
+    "expected": 0.5
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": " .5rest",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "1e",
+    "expected": 1
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "1e",
+    "expected": 1
+  },
+  {
+    "kind": "toNumber",
+    "input": "1e",
+    "expected": 1
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "1e",
+    "expected": 1
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "1e",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "1e+2tail",
+    "expected": 100
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "1e+2tail",
+    "expected": 100
+  },
+  {
+    "kind": "toNumber",
+    "input": "1e+2tail",
+    "expected": 100
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "1e+2tail",
+    "expected": 100
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "1e+2tail",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "0x10",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "0x10",
+    "expected": 0
+  },
+  {
+    "kind": "toNumber",
+    "input": "0x10",
+    "expected": 0
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "0x10",
+    "expected": 0
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "0x10",
+    "expected": 16
+  },
+  {
+    "kind": "safeNumber",
+    "input": "0b11",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "0b11",
+    "expected": 0
+  },
+  {
+    "kind": "toNumber",
+    "input": "0b11",
+    "expected": 0
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "0b11",
+    "expected": 0
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "0b11",
+    "expected": 3
+  },
+  {
+    "kind": "safeNumber",
+    "input": "0o77",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "0o77",
+    "expected": 0
+  },
+  {
+    "kind": "toNumber",
+    "input": "0o77",
+    "expected": 0
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "0o77",
+    "expected": 0
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "0o77",
+    "expected": 63
+  },
+  {
+    "kind": "safeNumber",
+    "input": "1_000",
+    "expected": 1
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "1_000",
+    "expected": 1
+  },
+  {
+    "kind": "toNumber",
+    "input": "1_000",
+    "expected": 1
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "1_000",
+    "expected": 1
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "1_000",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "Infinity",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "Infinity",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "toNumber",
+    "input": "Infinity",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "Infinity",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "Infinity",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "+Infinity",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "+Infinity",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "toNumber",
+    "input": "+Infinity",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "+Infinity",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "+Infinity",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "-Infinity",
+    "expected": "-Infinity"
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "-Infinity",
+    "expected": "-Infinity"
+  },
+  {
+    "kind": "toNumber",
+    "input": "-Infinity",
+    "expected": "-Infinity"
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "-Infinity",
+    "expected": "-Infinity"
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "-Infinity",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "Infinityx",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "Infinityx",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "toNumber",
+    "input": "Infinityx",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "Infinityx",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "Infinityx",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "1e309",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "1e309",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "toNumber",
+    "input": "1e309",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "1e309",
+    "expected": "Infinity"
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "1e309",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "-1e309",
+    "expected": "-Infinity"
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "-1e309",
+    "expected": "-Infinity"
+  },
+  {
+    "kind": "toNumber",
+    "input": "-1e309",
+    "expected": "-Infinity"
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "-1e309",
+    "expected": "-Infinity"
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "-1e309",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "NaN",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "NaN",
+    "expected": null
+  },
+  {
+    "kind": "toNumber",
+    "input": "NaN",
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "NaN",
+    "expected": null
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "NaN",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": "abc",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "abc",
+    "expected": null
+  },
+  {
+    "kind": "toNumber",
+    "input": "abc",
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "abc",
+    "expected": null
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "abc",
+    "expected": null
+  },
+  {
+    "kind": "safeNumber",
+    "input": " 12",
+    "expected": 12
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": " 12",
+    "expected": 12
+  },
+  {
+    "kind": "toNumber",
+    "input": " 12",
+    "expected": 12
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": " 12",
+    "expected": 12
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": " 12",
+    "expected": 12
+  },
+  {
+    "kind": "safeNumber",
+    "input": "﻿12",
+    "expected": 12
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "﻿12",
+    "expected": 12
+  },
+  {
+    "kind": "toNumber",
+    "input": "﻿12",
+    "expected": 12
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "﻿12",
+    "expected": 12
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "﻿12",
+    "expected": 12
+  },
+  {
+    "kind": "safeNumber",
+    "input": "0x10000000000000000",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "0x10000000000000000",
+    "expected": 0
+  },
+  {
+    "kind": "toNumber",
+    "input": "0x10000000000000000",
+    "expected": 0
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "0x10000000000000000",
+    "expected": 0
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "0x10000000000000000",
+    "expected": 18446744073709552000
+  },
+  {
+    "kind": "safeNumber",
+    "input": "+0x10",
+    "expected": 0
+  },
+  {
+    "kind": "safeNumberOrNull",
+    "input": "+0x10",
+    "expected": 0
+  },
+  {
+    "kind": "toNumber",
+    "input": "+0x10",
+    "expected": 0
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": "+0x10",
+    "expected": 0
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": "+0x10",
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": null,
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": true,
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": false,
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": 0,
+    "expected": 0
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": 1.5,
+    "expected": 1.5
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": -7,
+    "expected": -7
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": [],
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": [
+      1
+    ],
+    "expected": 1
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": [
+      1,
+      2
+    ],
+    "expected": 1
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": [
+      null,
+      2
+    ],
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": [
+      [
+        1
+      ]
+    ],
+    "expected": 1
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": {},
+    "expected": null
+  },
+  {
+    "kind": "toNumberSafe",
+    "input": {
+      "x": 1
+    },
+    "expected": null
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": null,
+    "expected": null
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": 1.5,
+    "expected": 1.5
+  },
+  {
+    "kind": "toFiniteNumberOrNull",
+    "input": -7,
+    "expected": -7
+  },
+  {
+    "kind": "parseResponse",
+    "input": "",
+    "expected": []
+  },
+  {
+    "kind": "parseResponse",
+    "input": "nothing",
+    "expected": []
+  },
+  {
+    "kind": "parseResponse",
+    "input": " v_sh600519=\"1~茅台~\"; v_hk00700=\"2~腾讯\";",
+    "expected": [
+      {
+        "key": "sh600519",
+        "fields": [
+          "1",
+          "茅台",
+          ""
+        ]
+      },
+      {
+        "key": "hk00700",
+        "fields": [
+          "2",
+          "腾讯"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "parseResponse",
+    "input": "a=;empty=\"\";one=\";bad;raw = 12; = x;",
+    "expected": [
+      {
+        "key": "a",
+        "fields": [
+          ""
+        ]
+      },
+      {
+        "key": "empty",
+        "fields": [
+          ""
+        ]
+      },
+      {
+        "key": "one",
+        "fields": [
+          ""
+        ]
+      },
+      {
+        "key": "raw",
+        "fields": [
+          "12"
+        ]
+      },
+      {
+        "key": "",
+        "fields": [
+          "x"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "parseResponse",
+    "input": "var v_a=\"x~y\";foo=bar=baz;",
+    "expected": [
+      {
+        "key": "var v_a",
+        "fields": [
+          "x",
+          "y"
+        ]
+      },
+      {
+        "key": "foo",
+        "fields": [
+          "bar=baz"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "decodeGBK",
+    "input": [],
+    "expected": ""
+  },
+  {
+    "kind": "decodeGBK",
+    "input": [
+      196,
+      227,
+      186,
+      195
+    ],
+    "expected": "你好"
+  },
+  {
+    "kind": "decodeGBK",
+    "input": [
+      129
+    ],
+    "expected": "�"
+  },
+  {
+    "kind": "decodeGBK",
+    "input": [
+      255
+    ],
+    "expected": ""
+  },
+  {
+    "kind": "decodeGBK",
+    "input": [
+      128
+    ],
+    "expected": "€"
+  },
+  {
+    "kind": "decodeGBK",
+    "input": [
+      65,
+      0,
+      66
+    ],
+    "expected": "A\u0000B"
+  },
+  {
+    "kind": "decodeGBK",
+    "input": [
+      129,
+      255
+    ],
+    "expected": "�"
+  },
+  {
+    "kind": "decodeGBK",
+    "input": [
+      255,
+      255
+    ],
+    "expected": ""
+  },
+  {
+    "kind": "decodeGBK",
+    "input": [
+      161,
+      64
+    ],
+    "expected": ""
+  },
+  {
+    "kind": "decodeGBK",
+    "input": [
+      162,
+      171
+    ],
+    "expected": ""
+  },
+  {
+    "kind": "decodeGBK",
+    "input": [
+      254,
+      254
+    ],
+    "expected": ""
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-07-09 09:30",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": 1720488600000,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1720488600000,
+      "tz": "Asia/Shanghai"
+    },
+    "expected": "2024-07-09 09:30"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-01-09 16:05",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": 1704787500000,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1704787500000,
+      "tz": "Asia/Shanghai"
+    },
+    "expected": "2024-01-09 16:05"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-11-03 01:30",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": 1730568600000,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1730568600000,
+      "tz": "Asia/Shanghai"
+    },
+    "expected": "2024-11-03 01:30"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-03-10 02:30",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": 1710009000000,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1710009000000,
+      "tz": "Asia/Shanghai"
+    },
+    "expected": "2024-03-10 02:30"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "20240229",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": 1709136000000,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1709136000000,
+      "tz": "Asia/Shanghai"
+    },
+    "expected": "2024-02-29 00:00"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024/07/09 09:30:01",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": null,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": null,
+      "tz": "Asia/Shanghai"
+    },
+    "expected": ""
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-07-09T09:30",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": 1720488600000,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1720488600000,
+      "tz": "Asia/Shanghai"
+    },
+    "expected": "2024-07-09 09:30"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "bad",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": null,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": null,
+      "tz": "Asia/Shanghai"
+    },
+    "expected": ""
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-02-30",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": 1709222400000,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1709222400000,
+      "tz": "Asia/Shanghai"
+    },
+    "expected": "2024-03-01 00:00"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": null,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": null,
+      "tz": "Asia/Shanghai"
+    },
+    "expected": ""
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-07-09 09:30",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": 1720488600000,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1720488600000,
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": "2024-07-09 09:30"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-01-09 16:05",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": 1704787500000,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1704787500000,
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": "2024-01-09 16:05"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-11-03 01:30",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": 1730568600000,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1730568600000,
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": "2024-11-03 01:30"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-03-10 02:30",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": 1710009000000,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1710009000000,
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": "2024-03-10 02:30"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "20240229",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": 1709136000000,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1709136000000,
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": "2024-02-29 00:00"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024/07/09 09:30:01",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": null,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": null,
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": ""
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-07-09T09:30",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": 1720488600000,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1720488600000,
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": "2024-07-09 09:30"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "bad",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": null,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": null,
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": ""
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-02-30",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": 1709222400000,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1709222400000,
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": "2024-03-01 00:00"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": null,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": null,
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": ""
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-07-09 09:30",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": 1720531800000,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1720531800000,
+      "tz": "America/New_York"
+    },
+    "expected": "2024-07-09 09:30"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-01-09 16:05",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": 1704834300000,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1704834300000,
+      "tz": "America/New_York"
+    },
+    "expected": "2024-01-09 16:05"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-11-03 01:30",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": 1730611800000,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1730611800000,
+      "tz": "America/New_York"
+    },
+    "expected": "2024-11-03 01:30"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-03-10 02:30",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": 1710055800000,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1710055800000,
+      "tz": "America/New_York"
+    },
+    "expected": "2024-03-10 03:30"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "20240229",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": 1709182800000,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1709182800000,
+      "tz": "America/New_York"
+    },
+    "expected": "2024-02-29 00:00"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024/07/09 09:30:01",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": null,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": null,
+      "tz": "America/New_York"
+    },
+    "expected": ""
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-07-09T09:30",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": 1720531800000,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1720531800000,
+      "tz": "America/New_York"
+    },
+    "expected": "2024-07-09 09:30"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "bad",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": null,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": null,
+      "tz": "America/New_York"
+    },
+    "expected": ""
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "2024-02-30",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": 1709269200000,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": 1709269200000,
+      "tz": "America/New_York"
+    },
+    "expected": "2024-03-01 00:00"
+  },
+  {
+    "kind": "buildTimeMeta",
+    "input": {
+      "local": "",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": null,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "formatInTZ",
+    "input": {
+      "epoch": null,
+      "tz": "America/New_York"
+    },
+    "expected": ""
+  },
+  {
+    "kind": "buildTimeMetaFromDateAndTime",
+    "input": {
+      "date": "20240709",
+      "clock": "09:30",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": 1720488600000,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "buildTimeMetaFromDateAndTime",
+    "input": {
+      "date": "2024-07-09",
+      "clock": "16:00:01",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": 1720512001000,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "buildTimeMetaFromDateAndTime",
+    "input": {
+      "date": "bad",
+      "clock": "09:30",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": null,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "buildTimeMetaFromDateAndTime",
+    "input": {
+      "date": "2024-02-30",
+      "clock": "00:00",
+      "tz": "Asia/Shanghai"
+    },
+    "expected": {
+      "timestamp": 1709222400000,
+      "tz": "Asia/Shanghai"
+    }
+  },
+  {
+    "kind": "buildTimeMetaFromDateAndTime",
+    "input": {
+      "date": "20240709",
+      "clock": "09:30",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": 1720488600000,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "buildTimeMetaFromDateAndTime",
+    "input": {
+      "date": "2024-07-09",
+      "clock": "16:00:01",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": 1720512001000,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "buildTimeMetaFromDateAndTime",
+    "input": {
+      "date": "bad",
+      "clock": "09:30",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": null,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "buildTimeMetaFromDateAndTime",
+    "input": {
+      "date": "2024-02-30",
+      "clock": "00:00",
+      "tz": "Asia/Hong_Kong"
+    },
+    "expected": {
+      "timestamp": 1709222400000,
+      "tz": "Asia/Hong_Kong"
+    }
+  },
+  {
+    "kind": "buildTimeMetaFromDateAndTime",
+    "input": {
+      "date": "20240709",
+      "clock": "09:30",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": 1720531800000,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "buildTimeMetaFromDateAndTime",
+    "input": {
+      "date": "2024-07-09",
+      "clock": "16:00:01",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": 1720555201000,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "buildTimeMetaFromDateAndTime",
+    "input": {
+      "date": "bad",
+      "clock": "09:30",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": null,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "buildTimeMetaFromDateAndTime",
+    "input": {
+      "date": "2024-02-30",
+      "clock": "00:00",
+      "tz": "America/New_York"
+    },
+    "expected": {
+      "timestamp": 1709269200000,
+      "tz": "America/New_York"
+    }
+  },
+  {
+    "kind": "parseJSVars",
+    "input": "var x={\"a\":[1,\";\"]};let y=false;const z=null;",
+    "expected": {
+      "x": {
+        "a": [
+          1,
+          ";"
+        ]
+      },
+      "y": false,
+      "z": null
+    }
+  },
+  {
+    "kind": "parseJSVars",
+    "input": "var x='单引号';var y=[['a;\"b','it\\'s'],{\"x\":'value'}];",
+    "expected": {
+      "x": "单引号",
+      "y": [
+        [
+          "a;\"b",
+          "it's"
+        ],
+        {
+          "x": "value"
+        }
+      ]
+    }
+  },
+  {
+    "kind": "parseJSVars",
+    "input": "var x=[1].concat([2]);var y={bad:1};var z=undefined;",
+    "expected": {}
+  },
+  {
+    "kind": "parseJSVars",
+    "input": "var x=\"first\";var x=\"second\";",
+    "expected": {
+      "x": "first"
+    }
+  },
+  {
+    "kind": "parseJSVars",
+    "input": "var x=\"back\\\\slash\";var y='double\"quote';var z='line\\nfeed';",
+    "expected": {
+      "x": "back\\slash",
+      "y": "double\"quote",
+      "z": "line\nfeed"
+    }
+  },
+  {
+    "kind": "extractJSONFromJSONP",
+    "input": "cb({\"x\":1});",
+    "expected": {
+      "value": {
+        "x": 1
+      }
+    }
+  },
+  {
+    "kind": "extractJSONFromJSONP",
+    "input": "/*script*/\ncb([1,2])",
+    "expected": {
+      "value": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "kind": "extractJSONFromJSONP",
+    "input": "foo.bar(null)",
+    "expected": {
+      "value": null
+    }
+  },
+  {
+    "kind": "extractJSONFromJSONP",
+    "input": "_cb(\"a(b)\")",
+    "expected": {
+      "value": "a(b)"
+    }
+  },
+  {
+    "kind": "extractJSONFromJSONP",
+    "input": "invalid",
+    "expected": {
+      "error": "PARSE_ERROR"
+    }
+  },
+  {
+    "kind": "extractJSONFromJSONP",
+    "input": "cb({invalid})",
+    "expected": {
+      "error": "PARSE_ERROR"
+    }
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "600519",
+      "market": "sh",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/sh600519.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/SH600519"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "000001",
+      "market": "0",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/sz000001.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/SZ000001"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "sh000001",
+      "market": "1",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/zs000001.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/SH000001"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "399001",
+      "market": "sz",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/zs399001.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/SZ399001"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "700",
+      "market": "hk",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/hk/00700.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/00700"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "116.700",
+      "market": "116",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/hk/00700.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/00700"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "usAAPL.OQ",
+      "market": "us",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/us/AAPL.OQ.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/AAPL.OQ"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "USB",
+      "market": "",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/us/USB.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/USB"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "105.msft",
+      "market": "105",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/us/MSFT.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/MSFT"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "IXIC",
+      "market": "100",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/gb/zsNDX.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/.IXIC"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "100.NDX100",
+      "market": "global",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/gb/zsNDX.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/.NDX"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "DJI",
+      "market": "global",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/gb/zsDJI.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/DJI"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "bj920001",
+      "market": "",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://so.eastmoney.com/web/s?keyword=bj920001"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/k?q=bj920001"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "BK0001",
+      "market": "",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://so.eastmoney.com/web/s?keyword=BK0001"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/k?q=BK0001"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "SHFE.rb2501",
+      "market": "",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://so.eastmoney.com/web/s?keyword=SHFE.rb2501"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/k?q=SHFE.rb2501"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "weird name?&",
+      "market": "other",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://so.eastmoney.com/web/s?keyword=weird%20name%3F%26"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/k?q=weird%20name%3F%26"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "sh600519",
+      "market": "hk",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://so.eastmoney.com/web/s?keyword=sh600519"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/k?q=sh600519"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "shsh600519",
+      "market": "sh",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://so.eastmoney.com/web/s?keyword=shsh600519"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/k?q=shsh600519"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "AAPL",
+      "market": "",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/us/AAPL.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/AAPL"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": " sh600519 ",
+      "market": " SH ",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://quote.eastmoney.com/sh600519.html"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/S/SH600519"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "100.IXIC",
+      "market": " 100 ",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://so.eastmoney.com/web/s?keyword=100.IXIC"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/k?q=100.IXIC"
+      }
+    ]
+  },
+  {
+    "kind": "externalLinks",
+    "input": {
+      "code": "a+b /!~*'()",
+      "market": "?",
+      "name": "x",
+      "type": "stock",
+      "category": ""
+    },
+    "expected": [
+      {
+        "name": "东方财富",
+        "url": "https://so.eastmoney.com/web/s?keyword=a%2Bb%20%2F!~*'()"
+      },
+      {
+        "name": "雪球",
+        "url": "https://xueqiu.com/k?q=a%2Bb%20%2F!~*'()"
+      }
+    ]
+  },
+  {
+    "kind": "chunkArray",
+    "input": {
+      "items": [],
+      "size": 1
+    },
+    "expected": []
+  },
+  {
+    "kind": "chunkArray",
+    "input": {
+      "items": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "size": 2
+    },
+    "expected": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5
+      ]
+    ]
+  },
+  {
+    "kind": "chunkArray",
+    "input": {
+      "items": [
+        1,
+        2
+      ],
+      "size": 5
+    },
+    "expected": [
+      [
+        1,
+        2
+      ]
+    ]
+  },
+  {
+    "kind": "cacheKey",
+    "input": [],
+    "expected": ""
+  },
+  {
+    "kind": "cacheKey",
+    "input": [
+      "x",
+      null,
+      "",
+      false,
+      0,
+      true
+    ],
+    "expected": "x:∅::false:0:true"
+  },
+  {
+    "kind": "cacheKey",
+    "input": [
+      "a:b",
+      "c"
+    ],
+    "expected": "a:b:c"
+  },
+  {
+    "kind": "cacheKey",
+    "input": [
+      1e-7,
+      1e+21,
+      0
+    ],
+    "expected": "1e-7:1e+21:0"
+  },
+  {
+    "kind": "cacheKey",
+    "input": [
+      "中文",
+      " ",
+      "∅"
+    ],
+    "expected": "中文: :∅"
+  },
+  {
+    "kind": "asyncPool",
+    "input": {
+      "ordered": true,
+      "concurrency": 1,
+      "values": [
+        0,
+        2,
+        4,
+        6
+      ]
+    },
+    "expected": [
+      0,
+      2,
+      4,
+      6
+    ]
+  },
+  {
+    "kind": "asyncPool",
+    "input": {
+      "ordered": true,
+      "concurrency": 2,
+      "values": [
+        0,
+        2,
+        4,
+        6
+      ]
+    },
+    "expected": [
+      0,
+      2,
+      4,
+      6
+    ]
+  },
+  {
+    "kind": "asyncPool",
+    "input": {
+      "ordered": true,
+      "concurrency": 5,
+      "values": [
+        0,
+        2,
+        4,
+        6
+      ]
+    },
+    "expected": [
+      0,
+      2,
+      4,
+      6
+    ]
+  },
+  {
+    "kind": "asyncPool",
+    "input": {
+      "ordered": false,
+      "concurrency": 1,
+      "values": [
+        0,
+        2,
+        4,
+        6
+      ]
+    },
+    "expected": [
+      0,
+      2,
+      4,
+      6
+    ]
+  },
+  {
+    "kind": "asyncPool",
+    "input": {
+      "ordered": false,
+      "concurrency": 2,
+      "values": [
+        0,
+        2,
+        4,
+        6
+      ]
+    },
+    "expected": [
+      0,
+      2,
+      4,
+      6
+    ]
+  },
+  {
+    "kind": "asyncPool",
+    "input": {
+      "ordered": false,
+      "concurrency": 5,
+      "values": [
+        0,
+        2,
+        4,
+        6
+      ]
+    },
+    "expected": [
+      0,
+      2,
+      4,
+      6
+    ]
+  }
+]

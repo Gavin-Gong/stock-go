@@ -1,0 +1,820 @@
+{
+  "lifecycleMethods": [
+    {
+      "source": "clearCaches",
+      "go": "SDK.ClearCaches"
+    }
+  ],
+  "baseline": "c6c9a790870c5c607379e542e214a02ea05979c4",
+  "sourceMethods": [
+    "batch.byCodes",
+    "batch.cn",
+    "batch.hk",
+    "batch.raw",
+    "batch.us",
+    "blockTrade.dailyStat",
+    "blockTrade.detail",
+    "blockTrade.marketStat",
+    "board.concept.constituents",
+    "board.concept.kline",
+    "board.concept.list",
+    "board.concept.minuteKline",
+    "board.concept.spot",
+    "board.industry.constituents",
+    "board.industry.kline",
+    "board.industry.list",
+    "board.industry.minuteKline",
+    "board.industry.spot",
+    "calendar.isTradingDay",
+    "calendar.marketStatus",
+    "calendar.nextTradingDay",
+    "calendar.prevTradingDay",
+    "chips.cn",
+    "chips.hk",
+    "chips.us",
+    "codes.cn",
+    "codes.fund",
+    "codes.hk",
+    "codes.us",
+    "dragonTiger.branchRank",
+    "dragonTiger.detail",
+    "dragonTiger.institution",
+    "dragonTiger.seatDetail",
+    "dragonTiger.stockStats",
+    "fund.dividendList",
+    "fund.navHistory",
+    "fund.profile",
+    "fund.rankHistory",
+    "fund.theme.getThemeFunds",
+    "fund.theme.getThemeList",
+    "fundFlow.individual",
+    "fundFlow.market",
+    "fundFlow.rank",
+    "fundFlow.sectorHistory",
+    "fundFlow.sectorRank",
+    "futures.comexInventory",
+    "futures.globalKline",
+    "futures.globalSpot",
+    "futures.inventory",
+    "futures.inventorySymbols",
+    "futures.kline",
+    "kline.cn",
+    "kline.cnMinute",
+    "kline.hk",
+    "kline.hkMinute",
+    "kline.signals",
+    "kline.us",
+    "kline.usMinute",
+    "kline.withIndicators",
+    "margin.accountInfo",
+    "margin.targetList",
+    "marketEvent.boardChanges",
+    "marketEvent.individualChanges",
+    "marketEvent.individualChangesHistory",
+    "marketEvent.stockChanges",
+    "marketEvent.unusualFluctuation",
+    "marketEvent.ztPool",
+    "northbound.history",
+    "northbound.holdingRank",
+    "northbound.individual",
+    "northbound.minute",
+    "northbound.summary",
+    "options.cffex.quotes",
+    "options.commodity.kline",
+    "options.commodity.spot",
+    "options.etf.dailyKline",
+    "options.etf.expireDay",
+    "options.etf.fiveDayMinute",
+    "options.etf.minute",
+    "options.etf.months",
+    "options.index.kline",
+    "options.index.spot",
+    "options.lhb",
+    "quotes.cn",
+    "quotes.cnSimple",
+    "quotes.fund",
+    "quotes.fundFlow",
+    "quotes.hk",
+    "quotes.largeOrder",
+    "quotes.timeline",
+    "quotes.us",
+    "reference.dividendDetail",
+    "reference.tradingCalendar",
+    "search"
+  ],
+  "goBindings": [
+    "batch.byCodes",
+    "batch.cn",
+    "batch.hk",
+    "batch.raw",
+    "batch.us",
+    "blockTrade.dailyStat",
+    "blockTrade.detail",
+    "blockTrade.marketStat",
+    "board.concept.constituents",
+    "board.concept.kline",
+    "board.concept.list",
+    "board.concept.minuteKline",
+    "board.concept.spot",
+    "board.industry.constituents",
+    "board.industry.kline",
+    "board.industry.list",
+    "board.industry.minuteKline",
+    "board.industry.spot",
+    "calendar.isTradingDay",
+    "calendar.marketStatus",
+    "calendar.nextTradingDay",
+    "calendar.prevTradingDay",
+    "chips.cn",
+    "chips.hk",
+    "chips.us",
+    "codes.cn",
+    "codes.fund",
+    "codes.hk",
+    "codes.us",
+    "dragonTiger.branchRank",
+    "dragonTiger.detail",
+    "dragonTiger.institution",
+    "dragonTiger.seatDetail",
+    "dragonTiger.stockStats",
+    "fund.dividendList",
+    "fund.navHistory",
+    "fund.profile",
+    "fund.rankHistory",
+    "fund.theme.getThemeFunds",
+    "fund.theme.getThemeList",
+    "fundFlow.individual",
+    "fundFlow.market",
+    "fundFlow.rank",
+    "fundFlow.sectorHistory",
+    "fundFlow.sectorRank",
+    "futures.comexInventory",
+    "futures.globalKline",
+    "futures.globalSpot",
+    "futures.inventory",
+    "futures.inventorySymbols",
+    "futures.kline",
+    "kline.cn",
+    "kline.cnMinute",
+    "kline.hk",
+    "kline.hkMinute",
+    "kline.signals",
+    "kline.us",
+    "kline.usMinute",
+    "kline.withIndicators",
+    "margin.accountInfo",
+    "margin.targetList",
+    "marketEvent.boardChanges",
+    "marketEvent.individualChanges",
+    "marketEvent.individualChangesHistory",
+    "marketEvent.stockChanges",
+    "marketEvent.unusualFluctuation",
+    "marketEvent.ztPool",
+    "northbound.history",
+    "northbound.holdingRank",
+    "northbound.individual",
+    "northbound.minute",
+    "northbound.summary",
+    "options.cffex.quotes",
+    "options.commodity.kline",
+    "options.commodity.spot",
+    "options.etf.dailyKline",
+    "options.etf.expireDay",
+    "options.etf.fiveDayMinute",
+    "options.etf.minute",
+    "options.etf.months",
+    "options.index.kline",
+    "options.index.spot",
+    "options.lhb",
+    "quotes.cn",
+    "quotes.cnSimple",
+    "quotes.fund",
+    "quotes.fundFlow",
+    "quotes.hk",
+    "quotes.largeOrder",
+    "quotes.timeline",
+    "quotes.us",
+    "reference.dividendDetail",
+    "reference.tradingCalendar",
+    "search"
+  ],
+  "cliMethods": [
+    "batch.byCodes",
+    "batch.cn",
+    "batch.hk",
+    "batch.raw",
+    "batch.us",
+    "blockTrade.dailyStat",
+    "blockTrade.detail",
+    "blockTrade.marketStat",
+    "board.concept.constituents",
+    "board.concept.kline",
+    "board.concept.list",
+    "board.concept.minuteKline",
+    "board.concept.spot",
+    "board.industry.constituents",
+    "board.industry.kline",
+    "board.industry.list",
+    "board.industry.minuteKline",
+    "board.industry.spot",
+    "calendar.isTradingDay",
+    "calendar.marketStatus",
+    "calendar.nextTradingDay",
+    "calendar.prevTradingDay",
+    "chips.cn",
+    "chips.hk",
+    "chips.us",
+    "codes.cn",
+    "codes.fund",
+    "codes.hk",
+    "codes.us",
+    "dragonTiger.branchRank",
+    "dragonTiger.detail",
+    "dragonTiger.institution",
+    "dragonTiger.seatDetail",
+    "dragonTiger.stockStats",
+    "fund.dividendList",
+    "fund.navHistory",
+    "fund.profile",
+    "fund.rankHistory",
+    "fund.theme.getThemeFunds",
+    "fund.theme.getThemeList",
+    "fundFlow.individual",
+    "fundFlow.market",
+    "fundFlow.rank",
+    "fundFlow.sectorHistory",
+    "fundFlow.sectorRank",
+    "futures.comexInventory",
+    "futures.globalKline",
+    "futures.globalSpot",
+    "futures.inventory",
+    "futures.inventorySymbols",
+    "futures.kline",
+    "kline.cn",
+    "kline.cnMinute",
+    "kline.hk",
+    "kline.hkMinute",
+    "kline.signals",
+    "kline.us",
+    "kline.usMinute",
+    "kline.withIndicators",
+    "margin.accountInfo",
+    "margin.targetList",
+    "marketEvent.boardChanges",
+    "marketEvent.individualChanges",
+    "marketEvent.individualChangesHistory",
+    "marketEvent.stockChanges",
+    "marketEvent.unusualFluctuation",
+    "marketEvent.ztPool",
+    "northbound.history",
+    "northbound.holdingRank",
+    "northbound.individual",
+    "northbound.minute",
+    "northbound.summary",
+    "options.cffex.quotes",
+    "options.commodity.kline",
+    "options.commodity.spot",
+    "options.etf.dailyKline",
+    "options.etf.expireDay",
+    "options.etf.fiveDayMinute",
+    "options.etf.minute",
+    "options.etf.months",
+    "options.index.kline",
+    "options.index.spot",
+    "options.lhb",
+    "quotes.cn",
+    "quotes.cnSimple",
+    "quotes.fund",
+    "quotes.fundFlow",
+    "quotes.hk",
+    "quotes.largeOrder",
+    "quotes.timeline",
+    "quotes.us",
+    "reference.dividendDetail",
+    "reference.tradingCalendar",
+    "search"
+  ],
+  "mcpTools": [
+    {
+      "name": "get_a_share_quotes",
+      "path": "quotes.cn"
+    },
+    {
+      "name": "get_a_share_simple_quotes",
+      "path": "quotes.cnSimple"
+    },
+    {
+      "name": "get_hk_quotes",
+      "path": "quotes.hk"
+    },
+    {
+      "name": "get_us_quotes",
+      "path": "quotes.us"
+    },
+    {
+      "name": "get_fund_quotes",
+      "path": "quotes.fund"
+    },
+    {
+      "name": "get_fund_flow",
+      "path": "quotes.fundFlow"
+    },
+    {
+      "name": "get_panel_large_order",
+      "path": "quotes.largeOrder"
+    },
+    {
+      "name": "get_today_timeline",
+      "path": "quotes.timeline"
+    },
+    {
+      "name": "get_a_share_code_list",
+      "path": "codes.cn"
+    },
+    {
+      "name": "get_us_code_list",
+      "path": "codes.us"
+    },
+    {
+      "name": "get_hk_code_list",
+      "path": "codes.hk"
+    },
+    {
+      "name": "get_fund_code_list",
+      "path": "codes.fund"
+    },
+    {
+      "name": "get_all_a_share_quotes",
+      "path": "batch.cn"
+    },
+    {
+      "name": "get_all_hk_quotes",
+      "path": "batch.hk"
+    },
+    {
+      "name": "get_all_us_quotes",
+      "path": "batch.us"
+    },
+    {
+      "name": "get_quotes_by_codes",
+      "path": "batch.byCodes"
+    },
+    {
+      "name": "get_history_kline",
+      "path": "kline.cn"
+    },
+    {
+      "name": "get_minute_kline",
+      "path": "kline.cnMinute"
+    },
+    {
+      "name": "get_hk_history_kline",
+      "path": "kline.hk"
+    },
+    {
+      "name": "get_hk_minute_kline",
+      "path": "kline.hkMinute"
+    },
+    {
+      "name": "get_us_history_kline",
+      "path": "kline.us"
+    },
+    {
+      "name": "get_us_minute_kline",
+      "path": "kline.usMinute"
+    },
+    {
+      "name": "get_kline_with_indicators",
+      "path": "kline.withIndicators"
+    },
+    {
+      "name": "get_kline_signals",
+      "path": "kline.signals"
+    },
+    {
+      "name": "get_chip_distribution",
+      "path": "chips.cn"
+    },
+    {
+      "name": "get_hk_chip_distribution",
+      "path": "chips.hk"
+    },
+    {
+      "name": "get_us_chip_distribution",
+      "path": "chips.us"
+    },
+    {
+      "name": "get_industry_list",
+      "path": "board.industry.list"
+    },
+    {
+      "name": "get_industry_spot",
+      "path": "board.industry.spot"
+    },
+    {
+      "name": "get_industry_constituents",
+      "path": "board.industry.constituents"
+    },
+    {
+      "name": "get_industry_kline",
+      "path": "board.industry.kline"
+    },
+    {
+      "name": "get_industry_minute_kline",
+      "path": "board.industry.minuteKline"
+    },
+    {
+      "name": "get_concept_list",
+      "path": "board.concept.list"
+    },
+    {
+      "name": "get_concept_spot",
+      "path": "board.concept.spot"
+    },
+    {
+      "name": "get_concept_constituents",
+      "path": "board.concept.constituents"
+    },
+    {
+      "name": "get_concept_kline",
+      "path": "board.concept.kline"
+    },
+    {
+      "name": "get_concept_minute_kline",
+      "path": "board.concept.minuteKline"
+    },
+    {
+      "name": "get_index_option_spot",
+      "path": "options.index.spot"
+    },
+    {
+      "name": "get_index_option_kline",
+      "path": "options.index.kline"
+    },
+    {
+      "name": "get_etf_option_months",
+      "path": "options.etf.months"
+    },
+    {
+      "name": "get_etf_option_expire_day",
+      "path": "options.etf.expireDay"
+    },
+    {
+      "name": "get_etf_option_minute",
+      "path": "options.etf.minute"
+    },
+    {
+      "name": "get_etf_option_daily_kline",
+      "path": "options.etf.dailyKline"
+    },
+    {
+      "name": "get_etf_option_five_day_minute",
+      "path": "options.etf.fiveDayMinute"
+    },
+    {
+      "name": "get_commodity_option_spot",
+      "path": "options.commodity.spot"
+    },
+    {
+      "name": "get_commodity_option_kline",
+      "path": "options.commodity.kline"
+    },
+    {
+      "name": "get_cffex_option_quotes",
+      "path": "options.cffex.quotes"
+    },
+    {
+      "name": "get_option_lhb",
+      "path": "options.lhb"
+    },
+    {
+      "name": "get_futures_kline",
+      "path": "futures.kline"
+    },
+    {
+      "name": "get_global_futures_spot",
+      "path": "futures.globalSpot"
+    },
+    {
+      "name": "get_global_futures_kline",
+      "path": "futures.globalKline"
+    },
+    {
+      "name": "get_futures_inventory_symbols",
+      "path": "futures.inventorySymbols"
+    },
+    {
+      "name": "get_futures_inventory",
+      "path": "futures.inventory"
+    },
+    {
+      "name": "get_comex_inventory",
+      "path": "futures.comexInventory"
+    },
+    {
+      "name": "get_individual_fund_flow",
+      "path": "fundFlow.individual"
+    },
+    {
+      "name": "get_market_fund_flow",
+      "path": "fundFlow.market"
+    },
+    {
+      "name": "get_fund_flow_rank",
+      "path": "fundFlow.rank"
+    },
+    {
+      "name": "get_sector_fund_flow_rank",
+      "path": "fundFlow.sectorRank"
+    },
+    {
+      "name": "get_sector_fund_flow_history",
+      "path": "fundFlow.sectorHistory"
+    },
+    {
+      "name": "get_northbound_minute",
+      "path": "northbound.minute"
+    },
+    {
+      "name": "get_northbound_flow_summary",
+      "path": "northbound.summary"
+    },
+    {
+      "name": "get_northbound_holding_rank",
+      "path": "northbound.holdingRank"
+    },
+    {
+      "name": "get_northbound_history",
+      "path": "northbound.history"
+    },
+    {
+      "name": "get_northbound_individual",
+      "path": "northbound.individual"
+    },
+    {
+      "name": "get_zt_pool",
+      "path": "marketEvent.ztPool"
+    },
+    {
+      "name": "get_stock_changes",
+      "path": "marketEvent.stockChanges"
+    },
+    {
+      "name": "get_individual_stock_changes",
+      "path": "marketEvent.individualChanges"
+    },
+    {
+      "name": "get_individual_stock_changes_history",
+      "path": "marketEvent.individualChangesHistory"
+    },
+    {
+      "name": "get_board_changes",
+      "path": "marketEvent.boardChanges"
+    },
+    {
+      "name": "get_unusual_fluctuation",
+      "path": "marketEvent.unusualFluctuation"
+    },
+    {
+      "name": "get_dragon_tiger_detail",
+      "path": "dragonTiger.detail"
+    },
+    {
+      "name": "get_dragon_tiger_stock_stats",
+      "path": "dragonTiger.stockStats"
+    },
+    {
+      "name": "get_dragon_tiger_institution",
+      "path": "dragonTiger.institution"
+    },
+    {
+      "name": "get_dragon_tiger_branch_rank",
+      "path": "dragonTiger.branchRank"
+    },
+    {
+      "name": "get_dragon_tiger_seat_detail",
+      "path": "dragonTiger.seatDetail"
+    },
+    {
+      "name": "get_block_trade_market_stat",
+      "path": "blockTrade.marketStat"
+    },
+    {
+      "name": "get_block_trade_detail",
+      "path": "blockTrade.detail"
+    },
+    {
+      "name": "get_block_trade_daily_stat",
+      "path": "blockTrade.dailyStat"
+    },
+    {
+      "name": "get_margin_account_info",
+      "path": "margin.accountInfo"
+    },
+    {
+      "name": "get_margin_target_list",
+      "path": "margin.targetList"
+    },
+    {
+      "name": "get_fund_dividend_list",
+      "path": "fund.dividendList"
+    },
+    {
+      "name": "get_fund_nav_history",
+      "path": "fund.navHistory"
+    },
+    {
+      "name": "get_fund_rank_history",
+      "path": "fund.rankHistory"
+    },
+    {
+      "name": "get_fund_profile",
+      "path": "fund.profile"
+    },
+    {
+      "name": "get_theme_list",
+      "path": "fund.theme.getThemeList"
+    },
+    {
+      "name": "get_theme_funds",
+      "path": "fund.theme.getThemeFunds"
+    },
+    {
+      "name": "is_trading_day",
+      "path": "calendar.isTradingDay"
+    },
+    {
+      "name": "next_trading_day",
+      "path": "calendar.nextTradingDay"
+    },
+    {
+      "name": "prev_trading_day",
+      "path": "calendar.prevTradingDay"
+    },
+    {
+      "name": "get_market_status",
+      "path": "calendar.marketStatus"
+    },
+    {
+      "name": "get_dividend_detail",
+      "path": "reference.dividendDetail"
+    },
+    {
+      "name": "get_trading_calendar",
+      "path": "reference.tradingCalendar"
+    },
+    {
+      "name": "search",
+      "path": "search"
+    }
+  ],
+  "publicHelperGroups": [
+    {
+      "name": "cache",
+      "goPackage": "cache",
+      "mappings": [
+        [
+          "MemoryCache",
+          "New"
+        ],
+        [
+          "MemoryCacheStore",
+          "NewMemoryStore"
+        ],
+        [
+          "cacheThrough",
+          "CacheThrough"
+        ],
+        [
+          "getSharedCache",
+          "GetShared"
+        ],
+        [
+          "configureSharedCache",
+          "ConfigureShared"
+        ],
+        [
+          "clearSharedCaches",
+          "ClearShared"
+        ],
+        [
+          "getClientScopedCache",
+          "GetClientScoped"
+        ],
+        [
+          "clearClientScopedCaches",
+          "ClearClientScoped"
+        ],
+        [
+          "createCacheKey",
+          "CreateKey"
+        ]
+      ]
+    },
+    {
+      "name": "time",
+      "goPackage": ".",
+      "mappings": [
+        [
+          "MARKET_TZ",
+          "MarketTZCN"
+        ],
+        [
+          "parseMarketTime",
+          "ParseMarketTime"
+        ],
+        [
+          "buildTimeMeta",
+          "BuildTimeMeta"
+        ],
+        [
+          "buildTimeMetaFromDateAndTime",
+          "BuildTimeMetaFromDateAndTime"
+        ],
+        [
+          "formatInTz",
+          "FormatInTZ"
+        ]
+      ]
+    },
+    {
+      "name": "parsing",
+      "goPackage": ".",
+      "mappings": [
+        [
+          "decodeGBK",
+          "DecodeGBK"
+        ],
+        [
+          "parseResponse",
+          "ParseResponse"
+        ],
+        [
+          "safeNumber",
+          "SafeNumber"
+        ],
+        [
+          "safeNumberOrNull",
+          "SafeNumberOrNull"
+        ],
+        [
+          "toNumber",
+          "ToNumber"
+        ],
+        [
+          "toNumberSafe",
+          "ToNumberSafe"
+        ],
+        [
+          "toFiniteNumberOrNull",
+          "ToFiniteNumberOrNull"
+        ],
+        [
+          "extractJsonFromJsonp",
+          "ExtractJSONFromJSONP"
+        ],
+        [
+          "jsonpRequest",
+          "JSONPRequest"
+        ],
+        [
+          "parseJsVars",
+          "ParseJSVars"
+        ],
+        [
+          "fetchJsVars",
+          "FetchJSVars"
+        ]
+      ]
+    },
+    {
+      "name": "externalLinks",
+      "goPackage": ".",
+      "mappings": [
+        [
+          "generateSearchExternalLinks",
+          "GenerateSearchExternalLinks"
+        ]
+      ]
+    },
+    {
+      "name": "utils",
+      "goPackage": ".",
+      "mappings": [
+        [
+          "chunkArray",
+          "ChunkArray"
+        ],
+        [
+          "asyncPool",
+          "AsyncPool"
+        ]
+      ]
+    }
+  ],
+  "pendingPublicHelpers": [],
+  "platformDifferences": [
+    "browser-only script injection/mutex replaced by Go HTTP and context",
+    "indicator context/registry objects remain internal; public Compute/Lookback are available"
+  ]
+}

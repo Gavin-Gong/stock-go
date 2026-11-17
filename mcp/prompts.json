@@ -1,0 +1,204 @@
+[
+  {
+    "name": "analyze_stock",
+    "title": "Analyze stock (technical)",
+    "description": "Full technical analysis of one symbol: klines + indicators + signals, summarized.",
+    "tier": "core",
+    "arguments": [
+      {
+        "name": "symbol",
+        "description": "Stock code, e.g. sh600519 / 600519 / 00700 / AAPL",
+        "required": true
+      },
+      {
+        "name": "period",
+        "description": "Kline period: daily / weekly / monthly (default daily)",
+        "required": false
+      }
+    ],
+    "usesTools": [
+      "search",
+      "get_kline_with_indicators",
+      "get_kline_signals"
+    ],
+    "args": [
+      {
+        "name": "symbol",
+        "description": "Stock code, e.g. sh600519 / 600519 / 00700 / AAPL",
+        "required": true
+      },
+      {
+        "name": "period",
+        "description": "Kline period: daily / weekly / monthly (default daily)",
+        "default": "daily"
+      }
+    ],
+    "template": "You are a rigorous equity technical-analysis assistant. Perform a complete technical analysis of __STOCK_GO_ARG_symbol__.\n\n[Data — call these read-only tools as needed; never fabricate data]\n1. If __STOCK_GO_ARG_symbol__ might not be a canonical code, confirm it with `search` first.\n2. Use `get_kline_with_indicators` to fetch __STOCK_GO_ARG_period__ klines with MA(5/10/20/60), MACD, BOLL, KDJ and RSI overlaid.\n3. Use `get_kline_signals` to detect golden/death crosses, overbought/oversold, BOLL breakouts and SAR reversals.\n\n[Analysis]\n- Trend: MA alignment, price-vs-MA relationship, MACD direction.\n- Momentum: KDJ / RSI overbought/oversold, any divergence.\n- Key levels: BOLL upper/lower bands, recent support/resistance.\n- Signals: list recent valid signals (type + date) and judge reliability — corroborate with price/volume, don't just name them.\n\n[Output]\nGive (1) a one-line verdict (bullish / bearish / range-bound); (2) per-dimension points (trend / momentum / signals / risk); (3) an explicit note that this is technical analysis of public market data and not investment advice.\n\nIMPORTANT: Respond in the same language the user is using.\nRead and analyze only — never place orders or move funds. If data is missing or a source returns nothing, say so honestly; do not fabricate numbers."
+  },
+  {
+    "name": "screen_stocks",
+    "title": "Screen stocks",
+    "description": "Build a candidate shortlist over a chosen universe by natural-language criteria, coarse-filtering before per-symbol indicator work.",
+    "tier": "core",
+    "arguments": [
+      {
+        "name": "criteria",
+        "description": "Screening criteria in natural language, e.g. \"MACD golden cross and turnover > 5%\"",
+        "required": true
+      },
+      {
+        "name": "scope",
+        "description": "Universe to screen: an industry/concept board name, or the whole market (default)",
+        "required": false
+      }
+    ],
+    "usesTools": [
+      "get_industry_constituents",
+      "get_concept_constituents",
+      "get_fund_flow_rank",
+      "get_a_share_quotes",
+      "get_kline_with_indicators",
+      "get_kline_signals"
+    ],
+    "args": [
+      {
+        "name": "criteria",
+        "description": "Screening criteria in natural language, e.g. \"MACD golden cross and turnover > 5%\"",
+        "required": true
+      },
+      {
+        "name": "scope",
+        "description": "Universe to screen: an industry/concept board name, or the whole market (default)",
+        "default": "the whole A-share market"
+      }
+    ],
+    "template": "You are a disciplined equity screening assistant. Build a candidate shortlist from __STOCK_GO_ARG_scope__ that matches: __STOCK_GO_ARG_criteria__.\n\n[Workflow — read-only tools; mind the cost of scanning many symbols]\n1. Resolve the universe:\n   - If __STOCK_GO_ARG_scope__ names an industry board, call `get_industry_constituents`; if a concept board, call `get_concept_constituents` to list its members.\n   - If it is the whole market, start from `get_fund_flow_rank` (whole-market main-force net-inflow ranking, top ~200) as a manageable candidate pool.\n2. Coarse-filter FIRST on cheap fields: call `get_a_share_quotes` on the universe and screen by change% / turnover / volume-ratio / market cap — narrow to a small subset BEFORE any per-symbol indicator work.\n3. Confirm on the subset only: for each surviving candidate call `get_kline_with_indicators` and `get_kline_signals` to check the technical part of the criteria (e.g. MACD golden cross, RSI not overbought).\n\n[Output]\nReturn a ranked shortlist — code, name, why it matched (the specific criteria met), and any caveat. State how many symbols you scanned vs. shortlisted. Never run per-symbol klines across thousands of names; always coarse-filter first.\n\nIMPORTANT: Respond in the same language the user is using.\nRead and analyze only — never place orders or move funds. If data is missing or a source returns nothing, say so honestly; do not fabricate numbers."
+  },
+  {
+    "name": "market_overview",
+    "title": "Market overview",
+    "description": "Today's A-share snapshot: market status, limit-up breadth, northbound flow, main-force money direction.",
+    "tier": "core",
+    "arguments": [],
+    "usesTools": [
+      "get_market_status",
+      "get_zt_pool",
+      "get_northbound_flow_summary",
+      "get_fund_flow_rank"
+    ],
+    "args": [],
+    "template": "You are a market briefing assistant. Give a concise snapshot of today's A-share market.\n\n[Data — read-only]\n1. `get_market_status` — is the market pre-open / open / lunch break / after-hours / closed (tells you how live the read is).\n2. `get_zt_pool` — the limit-up pool (breadth and risk appetite; also prior-day limit-ups for follow-through).\n3. `get_northbound_flow_summary` — northbound / southbound money direction.\n4. `get_fund_flow_rank` — where main-force money is flowing (leaders by net inflow).\n\n[Output]\nA short brief: (1) market status line; (2) risk appetite read from limit-up breadth; (3) capital direction (northbound + main-force leaders); (4) a one-line takeaway. Note this is a single snapshot, not continuous monitoring.\n\nIMPORTANT: Respond in the same language the user is using.\nRead and analyze only — never place orders or move funds. If data is missing or a source returns nothing, say so honestly; do not fabricate numbers."
+  },
+  {
+    "name": "monitor_watchlist",
+    "title": "Monitor watchlist",
+    "description": "Single-shot check of a watchlist: batch quotes, then drill into names that crossed a threshold.",
+    "tier": "core",
+    "arguments": [
+      {
+        "name": "symbols",
+        "description": "Comma-separated stock codes to monitor, e.g. \"600519,000858,300750\"",
+        "required": true
+      }
+    ],
+    "usesTools": [
+      "get_a_share_quotes",
+      "get_today_timeline",
+      "get_individual_fund_flow",
+      "get_kline_signals"
+    ],
+    "args": [
+      {
+        "name": "symbols",
+        "description": "Comma-separated stock codes to monitor, e.g. \"600519,000858,300750\"",
+        "required": true
+      }
+    ],
+    "template": "You are a watchlist monitoring assistant. Check the current state of these symbols: __STOCK_GO_ARG_symbols__.\n\n[Data — read-only]\n1. `get_a_share_quotes` — batch real-time quotes for all of __STOCK_GO_ARG_symbols__ at once (price, change%, turnover, volume-ratio, bid/ask).\n2. For any name that looks active (big move / volume spike), dig in:\n   - `get_today_timeline` — the intraday path, to tell a steady move from a one-off spike.\n   - `get_individual_fund_flow` — whether main-force money is flowing in or out.\n   - `get_kline_signals` — any fresh technical signal (cross / breakout) on the daily.\n\n[Output]\nOne line per symbol (price, change%, notable flag). Then call out the 1–3 names that crossed a threshold (big move / volume / main-force inflow / new signal) with a short why. This is a single snapshot — for continuous watching, re-run this skill on a schedule from your client.\n\nIMPORTANT: Respond in the same language the user is using.\nRead and analyze only — never place orders or move funds. If data is missing or a source returns nothing, say so honestly; do not fabricate numbers."
+  },
+  {
+    "name": "analyze_capital_flow",
+    "title": "Analyze capital flow",
+    "description": "Smart-money / main-force read for one stock or the broad market: fund flow + dragon-tiger + block trades + margin + northbound.",
+    "tier": "full",
+    "arguments": [
+      {
+        "name": "symbol",
+        "description": "Optional stock code to focus on; omit for a market-wide read",
+        "required": false
+      }
+    ],
+    "usesTools": [
+      "get_individual_fund_flow",
+      "get_market_fund_flow",
+      "get_dragon_tiger_detail",
+      "get_dragon_tiger_seat_detail",
+      "get_block_trade_detail",
+      "get_margin_account_info",
+      "get_northbound_individual"
+    ],
+    "args": [
+      {
+        "name": "symbol",
+        "description": "Optional stock code to focus on; omit for a market-wide read",
+        "required": false
+      }
+    ],
+    "template": "You are a capital-flow / smart-money analyst. Focus: stock __STOCK_GO_ARG_symbol__.\n\n[Data — read-only; pick what fits the focus]\n- `get_individual_fund_flow` — per-stock main / large / medium / small net inflow (history).\n- `get_market_fund_flow` — market-wide main-force flow.\n- `get_dragon_tiger_detail` — dragon-tiger board: which stocks made it and when.\n- `get_dragon_tiger_seat_detail` — which seats (institutions / hot-money desks) traded.\n- `get_block_trade_detail` — block trades (discount/premium, buyer/seller side).\n- `get_margin_account_info` — margin balance trend (leverage appetite).\n- `get_northbound_individual` — northbound per-stock holdings change.\n\nFor a specific stock, lean on get_individual_fund_flow + get_dragon_tiger_detail / get_dragon_tiger_seat_detail + get_block_trade_detail + get_northbound_individual + get_margin_account_info.\nFor a market-wide read, lean on get_market_fund_flow + get_margin_account_info + the northbound picture.\n\n[Output]\nRead main-force intent — accumulation vs. distribution — corroborated across at least two independent flow sources (don't over-read a single day). List the concrete evidence per source, then a net judgment and key caveats.\n\nIMPORTANT: Respond in the same language the user is using.\nRead and analyze only — never place orders or move funds. If data is missing or a source returns nothing, say so honestly; do not fabricate numbers.",
+    "emptyTemplate": "You are a capital-flow / smart-money analyst. Focus: the broad market.\n\n[Data — read-only; pick what fits the focus]\n- `get_individual_fund_flow` — per-stock main / large / medium / small net inflow (history).\n- `get_market_fund_flow` — market-wide main-force flow.\n- `get_dragon_tiger_detail` — dragon-tiger board: which stocks made it and when.\n- `get_dragon_tiger_seat_detail` — which seats (institutions / hot-money desks) traded.\n- `get_block_trade_detail` — block trades (discount/premium, buyer/seller side).\n- `get_margin_account_info` — margin balance trend (leverage appetite).\n- `get_northbound_individual` — northbound per-stock holdings change.\n\nFor a specific stock, lean on get_individual_fund_flow + get_dragon_tiger_detail / get_dragon_tiger_seat_detail + get_block_trade_detail + get_northbound_individual + get_margin_account_info.\nFor a market-wide read, lean on get_market_fund_flow + get_margin_account_info + the northbound picture.\n\n[Output]\nRead main-force intent — accumulation vs. distribution — corroborated across at least two independent flow sources (don't over-read a single day). List the concrete evidence per source, then a net judgment and key caveats.\n\nIMPORTANT: Respond in the same language the user is using.\nRead and analyze only — never place orders or move funds. If data is missing or a source returns nothing, say so honestly; do not fabricate numbers."
+  },
+  {
+    "name": "analyze_fund",
+    "title": "Analyze fund",
+    "description": "Mutual-fund review: profile + NAV history + category ranking.",
+    "tier": "full",
+    "arguments": [
+      {
+        "name": "fundCode",
+        "description": "6-digit fund code, e.g. 110022",
+        "required": true
+      }
+    ],
+    "usesTools": [
+      "get_fund_profile",
+      "get_fund_nav_history",
+      "get_fund_rank_history"
+    ],
+    "args": [
+      {
+        "name": "fundCode",
+        "description": "6-digit fund code, e.g. 110022",
+        "required": true
+      }
+    ],
+    "template": "You are a mutual-fund analyst. Assess fund __STOCK_GO_ARG_fundCode__.\n\n[Data — read-only]\n1. `get_fund_profile` — type, manager, size, strategy.\n2. `get_fund_nav_history` — historical NAV trend: cumulative return, drawdown, volatility.\n3. `get_fund_rank_history` — same-category ranking percentile over time (consistency vs. one-off).\n\n[Output]\nA structured review: (1) what it is (type / manager / size); (2) performance (returns across horizons, worst drawdown, volatility); (3) ranking percentile and whether it's consistent; (4) a balanced takeaway on strengths / risks. Note that NAV data is settled (T-1 or later) — there is no intraday estimate available, so don't imply live pricing. Public data only, not investment advice.\n\nIMPORTANT: Respond in the same language the user is using.\nRead and analyze only — never place orders or move funds. If data is missing or a source returns nothing, say so honestly; do not fabricate numbers."
+  },
+  {
+    "name": "diagnose_stock",
+    "title": "Diagnose stock (multi-factor)",
+    "description": "Cross-dimension diagnosis of one stock: technicals + capital + chips, scored and combined.",
+    "tier": "full",
+    "arguments": [
+      {
+        "name": "symbol",
+        "description": "Stock code to diagnose, e.g. sh600519",
+        "required": true
+      }
+    ],
+    "usesTools": [
+      "get_kline_with_indicators",
+      "get_kline_signals",
+      "get_individual_fund_flow",
+      "get_dragon_tiger_stock_stats",
+      "get_chip_distribution"
+    ],
+    "args": [
+      {
+        "name": "symbol",
+        "description": "Stock code to diagnose, e.g. sh600519",
+        "required": true
+      }
+    ],
+    "template": "You are a multi-factor stock diagnostician. Diagnose __STOCK_GO_ARG_symbol__ across technicals, capital and chips.\n\n[Data — read-only]\n- Technicals: `get_kline_with_indicators` (trend / momentum) + `get_kline_signals` (crosses / breakouts).\n- Capital: `get_individual_fund_flow` (main-force in/out) + `get_dragon_tiger_stock_stats` (dragon-tiger frequency / stats).\n- Chips: `get_chip_distribution` (profit ratio, 90/70 cost range, concentration).\n\n[Output]\nScore each dimension (technical / capital / chips) as bullish / neutral / bearish with the evidence, then a combined read and the key risks. Be explicit where dimensions disagree. Public-data technical analysis, not investment advice.\n\nIMPORTANT: Respond in the same language the user is using.\nRead and analyze only — never place orders or move funds. If data is missing or a source returns nothing, say so honestly; do not fabricate numbers."
+  }
+]

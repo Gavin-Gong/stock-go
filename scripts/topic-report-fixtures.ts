@@ -1,0 +1,27 @@
+// Optional upstream oracle. Go tests only consume the committed JSON.
+import {readFileSync,writeFileSync} from 'node:fs';
+import * as dragon from '../.upstream/src/providers/eastmoney/dragonTiger';
+import * as block from '../.upstream/src/providers/eastmoney/blockTrade';
+import * as margin from '../.upstream/src/providers/eastmoney/margin';
+import * as topic from '../.upstream/src/providers/eastmoney/topicData';
+async function main(){const fixtures:any[]=[];
+ const keys=new Set<string>();for(const file of ['dragonTiger','blockTrade','margin'])for(const m of readFileSync(new URL(`../.upstream/src/providers/eastmoney/${file}.ts`,import.meta.url),'utf8').matchAll(/item\.([A-Z][A-Z0-9_]*)/g))keys.add(m[1]);
+ const full:any=Object.fromEntries([...keys].map((key,i)=>[key,i+0.25]));Object.assign(full,{SECURITY_CODE:'600519',SECURITY_NAME_ABBR:'贵州茅台',TRADE_DATE:'2024-01-02 00:00:00',STATISTICS_DATE:'2024-01-03T00:00:00',LATEST_TDATE:'2024-01-05',EXPLANATION:'上榜原因',EXPLAIN:'旧原因',OPERATEDEPT_CODE:'001',OPERATEDEPT_NAME:'营业部',RANK:null,BUYER_DEPT:'买方',SELLER_DEPT:'卖方'});
+ const fallback={...full};for(const key of ['EXPLANATION','TOTAL_BUYAMT','TOTAL_SELLAMT','TOTAL_BUYER_SALESTIMES','TOTAL_SELLER_SALESTIMES','CLOSE_PRICE','CHANGE_RATE','TURNOVER','PREMIUM_TURNOVER','DISCOUNT_TURNOVER','DEAL_PRICE','DEAL_VOLUME','DEAL_AMT','PREMIUM_RATIO','BUYER_DEPT','SELLER_DEPT','DEAL_NUM','PREMIUM_AMT','DISCOUNT_AMT','STATISTICS_DATE','OPERATE_INVESTOR_NUM','BUY_AMT_REAL','SELL_AMT_REAL','BUY_RATIO_TOTAL','SELL_RATIO_TOTAL'])fallback[key]=null;
+ const invalid={SECURITY_CODE:'000001',TRADE_DATE:'invalid',CLOSE_PRICE:'--',CHANGE_RATE:'1.2x',EXPLANATION:'',EXPLAIN:'不应回退',TOTAL_BUYAMT:'--',BUY_AMT:12,PRICE:0,RANK:'--'};
+ const response={result:{pages:1,count:3,data:[full,fallback,invalid]}};
+ const date={startDate:'20240101',endDate:'20240131'};
+ const jobs:any[]=[['dragonDetail',(c:any)=>dragon.getDragonTigerDetail(c,date)],['dragonInstitution',(c:any)=>dragon.getDragonTigerInstitution(c,date)],['seat',(c:any)=>dragon.getDragonTigerStockSeatDetail(c,'600519.SH','20240102')],['blockMarket',(c:any)=>block.getBlockTradeMarketStat(c)],['blockDetail',(c:any)=>block.getBlockTradeDetail(c,date)],['blockDaily',(c:any)=>block.getBlockTradeDailyStat(c,date)],['marginAccount',(c:any)=>margin.getMarginAccountInfo(c)],['marginTarget',(c:any)=>margin.getMarginTargetList(c,'20240102')]];
+ for(const period of ['1month','3month','6month','1year'])for(const op of ['dragonStats','dragonBranch'])jobs.push([op,(c:any)=>op==='dragonStats'?dragon.getDragonTigerStockStats(c,period as any):dragon.getDragonTigerBranchRank(c,period as any),period]);
+ async function record(operation:string,response:any,call:(c:any)=>Promise<any>,variant='') {const queries:any[]=[];const client:any={get:async(url:string)=>{queries.push(Object.fromEntries(new URL(url).searchParams));return response}};fixtures.push({operation,variant,response,queries,expected:await call(client)})}
+ for(const [op,call,variant]of jobs)await record(op,response,call,variant);
+ const poolRows=[{c:'600519',n:'测试',p:12345,zdp:'9.99',tp:'13000',amount:0,zb:99,ltsz:1e9,tshare:2e9,hs:3,lbc:2,fbt:93001,lbt:'145959',fund:500,zbc:1,hybk:'白酒',zttj:{days:5,ct:3},zf:8,zs:1},{m:'000001',p:'--',amount:null,zb:'123abc',fbt:0,lbt:'',zttj:{ct:0}},{c:'',m:'fallback',p:0,fbt:null,zttj:null}];
+ for(const type of ['zt','yesterday','strong','sub_new','broken','dt'])await record('pool',{data:{pool:poolRows}},c=>topic.getZTPool(c,type as any,'2024-01-02'),type);
+ const stockRows=[{tm:93001,c:'600519',n:'测试',t:8193,i:'123'},{tm:'145959',c:'000001',t:'8194'}, {tm:0,t:8219},{tm:null},{tm:'',t:0}];
+ for(const type of ['single','multi','all'])await record('changes',{data:{tc:'5',allstock:stockRows}},c=>topic.getStockChanges(c,type==='single'?'large_buy':type==='multi'?['large_buy','large_sell']:'all',{page:2,pageSize:10}),type);
+ for(const variant of ['full','empty','missing','echo']){const response=variant==='missing'?{data:null}:variant==='empty'?{data:{}}:{data:{d:variant==='echo'?20240101:20240102,c:'600519',n:'测试',data:[{tm:93001,t:8193,p:12345,u:'1.23',i:'信息',v:'12'},{tm:null,t:8219,p:'--',u:null},{tm:0,t:'99999',p:0},{p:1}]}};await record('individual',response,c=>topic.getIndividualStockChanges(c,'600519.SH','20240102'),variant)}
+ await record('board',{data:{allbk:[{n:'行业',u:1,zjl:123,ct:4,ms:{m:0,c:'600519',n:'茅台'},ydl:[{t:8193,ct:2},{t:'new',ct:'3'},{t:'bad',ct:'1x'},{t:null,ct:5}]},{bkn:'旧板块',bkz:'2.3',bkj:'--',bkc:5,ms:{m:1},bkdf:{'8194':'5','unknown':true,'bad':'1x'}},{n:'',bkn:'fallback',ms:{m:'0'},ydl:[],bkdf:{'8193':99}},{}]}},c=>topic.getBoardChanges(c));
+ const unusual={result:{pages:1,data:[{SECURITY_CODE:'600519',SECURITY_NAME_ABBR:'茅台',TRADE_DATE:'2024-01-02 00:00:00',UNUSUAL_TYPE:'规则',IS_HAPPEN:1,IS_POSITIVE:'1',DEVUATION_VALUE:'100.5',MAX_DAYS:10,CHANGE_RATE:5,CHANGE_RATE_TARGET:'--'},{TRADE_DATE:'invalid',IS_HAPPEN:true,IS_POSITIVE:0}]}};
+ for(const variant of ['date','range','all'])await record('unusual',unusual,c=>topic.getUnusualFluctuation(c,variant==='date'?{date:'20240102',triggered:true}:variant==='range'?{startDate:'20240101',endDate:'20240131',triggered:false}:{}),variant);
+ writeFileSync(new URL('../testdata/topic-report-parity.json',import.meta.url),JSON.stringify(fixtures)+'\n');console.log(`Generated ${fixtures.length} topic/report fixtures`)
+}main().catch(error=>{console.error(error);process.exitCode=1});

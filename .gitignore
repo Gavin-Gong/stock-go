@@ -1,0 +1,8 @@
+.upstream/
+coverage.out
+/bin/
+
+.DS_Store
+.env
+.env.*
+!.env.example

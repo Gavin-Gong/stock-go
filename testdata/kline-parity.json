@@ -1,0 +1,259 @@
+[
+  {
+    "kind": "csv",
+    "line": "2024-01-02,10,11,12,9,100,200,3,4,5,6",
+    "expected": {
+      "date": "2024-01-02",
+      "open": 10,
+      "close": 11,
+      "high": 12,
+      "low": 9,
+      "volume": 100,
+      "amount": 200,
+      "amplitude": 3,
+      "changePercent": 4,
+      "change": 5,
+      "turnoverRate": 6
+    }
+  },
+  {
+    "kind": "csv",
+    "line": "2024-01-02,--,,12,-,100,200,--,4,,6",
+    "expected": {
+      "date": "2024-01-02",
+      "open": null,
+      "close": null,
+      "high": 12,
+      "low": null,
+      "volume": 100,
+      "amount": 200,
+      "amplitude": null,
+      "changePercent": 4,
+      "change": null,
+      "turnoverRate": 6
+    }
+  },
+  {
+    "kind": "csv",
+    "line": "2024-01-02,10.5%,11e1,12,9,100",
+    "expected": {
+      "date": "2024-01-02",
+      "open": 10.5,
+      "close": 110,
+      "high": 12,
+      "low": 9,
+      "volume": 100,
+      "amount": null,
+      "amplitude": null,
+      "changePercent": null,
+      "change": null,
+      "turnoverRate": null
+    }
+  },
+  {
+    "kind": "tencentHistory",
+    "history": {
+      "code": 0,
+      "data": {
+        "sh600519": {
+          "hfqday": [
+            [
+              "2024-01-01",
+              "100",
+              "100",
+              "110",
+              "90",
+              "10"
+            ],
+            [
+              "2024-01-02",
+              "110",
+              "120",
+              "130",
+              "100",
+              "20"
+            ],
+            [
+              "2024-01-03",
+              "130",
+              "200",
+              "210",
+              "120",
+              "30"
+            ]
+          ]
+        }
+      }
+    },
+    "anchor": {
+      "data": {
+        "sh600519": {
+          "day": [
+            [
+              "2024-01-03",
+              "13",
+              "20",
+              "21",
+              "12",
+              "30"
+            ]
+          ]
+        }
+      }
+    },
+    "options": {
+      "startDate": "20240102",
+      "endDate": "20240103"
+    },
+    "expected": [
+      {
+        "date": "2024-01-02",
+        "open": 11,
+        "close": 12,
+        "high": 13,
+        "low": 10,
+        "volume": 20,
+        "timestamp": 1704124800000,
+        "tz": "Asia/Shanghai",
+        "code": "600519",
+        "amount": null,
+        "amplitude": 30,
+        "changePercent": 20,
+        "change": 2,
+        "turnoverRate": null
+      },
+      {
+        "date": "2024-01-03",
+        "open": 13,
+        "close": 20,
+        "high": 21,
+        "low": 12,
+        "volume": 30,
+        "timestamp": 1704211200000,
+        "tz": "Asia/Shanghai",
+        "code": "600519",
+        "amount": null,
+        "amplitude": 75,
+        "changePercent": 66.67,
+        "change": 8,
+        "turnoverRate": null
+      }
+    ]
+  },
+  {
+    "kind": "tencentMinute",
+    "minute": {
+      "data": {
+        "sh600519": {
+          "m5": [
+            [
+              "202401020930",
+              "10",
+              "11",
+              "12",
+              "9",
+              "20"
+            ],
+            [
+              "202401020935",
+              "11",
+              "12",
+              "13",
+              "10",
+              "30"
+            ]
+          ]
+        }
+      }
+    },
+    "options": {
+      "period": "5",
+      "startDate": "20240102",
+      "endDate": "20240102"
+    },
+    "expected": [
+      {
+        "time": "2024-01-02 09:30",
+        "timestamp": 1704159000000,
+        "tz": "Asia/Shanghai",
+        "open": 10,
+        "close": 11,
+        "high": 12,
+        "low": 9,
+        "volume": 20,
+        "amount": null,
+        "amplitude": null,
+        "changePercent": null,
+        "change": null,
+        "turnoverRate": null
+      },
+      {
+        "time": "2024-01-02 09:35",
+        "timestamp": 1704159300000,
+        "tz": "Asia/Shanghai",
+        "open": 11,
+        "close": 12,
+        "high": 13,
+        "low": 10,
+        "volume": 30,
+        "amount": null,
+        "amplitude": 27.27,
+        "changePercent": 9.09,
+        "change": 1,
+        "turnoverRate": null
+      }
+    ]
+  },
+  {
+    "kind": "sinaHistory",
+    "sina": [
+      {
+        "day": "2023-12-29",
+        "open": "8",
+        "close": "10",
+        "high": "11",
+        "low": "7",
+        "volume": "1000"
+      },
+      {
+        "day": "2024-01-02",
+        "open": "10",
+        "close": "12",
+        "high": "13",
+        "low": "9",
+        "volume": "2000"
+      },
+      {
+        "day": "2024-01-03",
+        "open": "12",
+        "close": "14",
+        "high": "15",
+        "low": "11",
+        "volume": "3000"
+      }
+    ],
+    "options": {
+      "period": "weekly",
+      "startDate": "20240101",
+      "endDate": "20240131"
+    },
+    "expected": [
+      {
+        "date": "2024-01-03",
+        "timestamp": 1704211200000,
+        "tz": "Asia/Shanghai",
+        "code": "600519",
+        "open": 10,
+        "high": 15,
+        "low": 9,
+        "close": 14,
+        "volume": 50,
+        "amount": null,
+        "change": 4,
+        "changePercent": 40,
+        "amplitude": 60,
+        "turnoverRate": null
+      }
+    ]
+  }
+]
